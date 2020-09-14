@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>o  | ISUCON 10 予選 参加記</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.75.0-DEV" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:\/\/omuric.github.io\/lib\/pangu.min.js', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https://omuric.github.io/" title="o" class="heading font-cursive icon">o</a>
+	</h2>
+</div>
+<h1 class="pt-2">ISUCON 10 予選 参加記</h1>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2020-09-14T16:33:29&#43;09:00">2020-9-14 16:33</time>
+</div>
+
+<hr />
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h1 id="isucon-10-予選-参加記">ISUCON 10 予選 参加記</h1>
+<p>2020年 9月12日 (土) に開催された ISUCON 10 の予選に一人チームで Rust で参加しました<br>
+昨年/一昨年は会社の方とチームで参加していましたが、
+職が無になり誘える友達もいないのでぼっちで参加しました<br>
+予選突破のボーダーが 2158 点で、自分の最終結果は 1017 点でした<br>
+(<a href="http://isucon.net/archives/55008744.html">最終結果一覧</a>)</p>
+<h2 id="事前準備">事前準備</h2>
+<ul>
+<li>ISUCON 9 の参照実装を Rust で書き直す (未完)
+<ul>
+<li>actix-web + sqlx で実装</li>
+<li>半分ぐらい実装して、ライブラリは理解した気持ちになったのと実装がしんどくなったので諦めた</li>
+</ul>
+</li>
+<li><a href="https://github.com/tohutohu/isucon9/blob/master/Makefile">ISUCON 9 の予選1日目一位の方の Makefile</a> をパクる
+<ul>
+<li>Makefile 使うのが辛かったので <a href="https://github.com/sagiegurari/cargo-make">cargo-make</a> で書き直した</li>
+<li>オリジナルはサーバ内で使う想定になっているが、全サーバを一度に操作したかったのでローカルから各サーバに ssh して操作する形に書き直した</li>
+<li>自分の運用に合わせて幾つかコマンドを追加</li>
+</ul>
+</li>
+<li>設定ファイルの管理
+<ul>
+<li>各サーバの設定ファイル (hosts, my.cnf, nginx.conf, sysctl.cnf) をローカルで git 管理するように</li>
+<li>nginx.conf と my.cnf はデプロイ前にバリデーションをかけるようにした</li>
+</ul>
+</li>
+<li>sysctl, mysql, nginx のいい感じの設定を調べる</li>
+<li>nginx でのロードバランシング、mysql のレプリケーションを素振り</li>
+</ul>
+<h2 id="当日やったこと">当日やったこと</h2>
+<ul>
+<li>sysctl, mysql, nginx に設定ファイルにいい感じの設定を入れる</li>
+<li>スロークエリを確認しながら index を貼る</li>
+<li>nazotte の幾何判定をアプリ内で行う
+<ul>
+<li>幾何判定のために SQL クエリの発行が行われていたので修正</li>
+<li>競プロっぽいなと思いつつ <a href="https://www.nttpc.co.jp/technology/number_algorithm.html">NTTPC さんの記事</a> を写経した</li>
+<li>絶対バグらせる気がしたが、オリジナルとAPI のレスポンスを比べて diff がなかったので恐らくバグってないはず (1ケースしか試してないけど&hellip;) (ベンチも通ってるので多分大丈夫)</li>
+</ul>
+</li>
+<li>物件のレコメンドのクエリを修正
+<ul>
+<li>ドアサイズを絞るために無駄な OR があったので消した
+<ul>
+<li>width, height の大きい方を door_size_0, 小さい方を door_size_1 としてカラムを追加</li>
+<li>椅子の w, h, z の一番小さいものを door_size_1 と比較, 二番目に小さいものを door_size_0 と比較する</li>
+</ul>
+</li>
+<li>結局いい感じに index に乗らなかった (SQL の知識が足らずここで諦めてしまった)</li>
+</ul>
+</li>
+<li>Bot を nginx で弾く
+<ul>
+<li>ドキュメント記載の Bot の正規表現は PHP preg_match() に準拠してそうだった (勘) ので、<a href="http://okumocchi.jp/php/re.php">php 正規表現チェッカー</a> で確認しながらテストした</li>
+<li>nginx の if で使える正規表現の理解が足りず、弾くとまずいものまで弾きそうだったので、幾つかのパターンは無視した</li>
+<li>actix-web の Guard を一瞬使おうとしたが正規表現に対応して無かったので諦めた</li>
+<li>スコアに影響するパス ( /api/chair/buy/{id} , /api/estate/req_doc/{id}) は Bot でも通すようにした</li>
+</ul>
+</li>
+<li>サーバ構成の変更
+<ul>
+<li>mysql の CPU 使用率が 90 % ぐらいで張り付いていたので、DB の分割を試したが上手く行かず
+<ul>
+<li>Write 1 台, Read 2台でレプリケーションを試したが、遅延のためかベンチマークが通らず&hellip; (時間が足らずちゃんと確認できてないので別原因かも)</li>
+<li>アプリケーションの修正も含めてかなり無駄に時間を使ってしまった</li>
+</ul>
+</li>
+<li>仕方ないので以下の構成で妥協した
+<ul>
+<li>1: nginx + app</li>
+<li>2: app</li>
+<li>3: mysql</li>
+</ul>
+</li>
+<li>テーブル毎に DB 分割思いつきたかった&hellip; (悲しい)</li>
+</ul>
+</li>
+<li>再起動試験
+<ul>
+<li>不要なサービスの自動起動を無効にして、全台再起動後にテスト</li>
+<li>コンテスト終了後の再テストで出たスコアが最終結果になると勘違いしており、ここで下振れたスコアのまま放置してしまった<br>
+(もともと 1240 点ぐらいで -200 点ぐらい下振れてて悲しかったが、結局予選通ってないのでまあ)</li>
+</ul>
+</li>
+</ul>
+<h2 id="良かったこと">良かったこと</h2>
+<ul>
+<li>Rust で参加
+<ul>
+<li>これまで Python で参加していたが、幾分あまり書かないので読むのも書くのも脳死でできず辛かった</li>
+<li>最近割と Rust を書く機会が多く、割と習熟できていたのでアプリケーション周りで詰まることは無くスムーズに進めれてよかった</li>
+</ul>
+</li>
+<li>事前に用意した Makefile のコマンド
+<ul>
+<li>ほぼ必要な操作を網羅していて、それらが脳死でできるのでかなり楽だった</li>
+<li>kataribe と pt-query-digest スゴイ</li>
+</ul>
+</li>
+<li>一人参加
+<ul>
+<li>必然的にすべての部分を見ないと行けないので、自分に足りない部分が明確になってよかった</li>
+<li>コミュニケーションコストが無なのでそこはかなり楽だった</li>
+</ul>
+</li>
+</ul>
+<h2 id="反省点">反省点</h2>
+<ul>
+<li>SQL 周りの知識不足
+<ul>
+<li>スロークエリを直す作業で、なかなか index に乗ってくれず辛かった</li>
+<li>作業時間的にもここがボトルネックになっていた</li>
+<li>データベーススペシャリスト試験受けるか</li>
+</ul>
+</li>
+<li>インフラ周りの設定の知識不足
+<ul>
+<li>パラメータが与える影響の理解が不足していて、問題に応じた調整が全然できなかった</li>
+<li>過去問で練習したい</li>
+</ul>
+</li>
+<li>Rust のパフォーマンス測定
+<ul>
+<li>いい感じに測定する方法がわからず今回は諦めてしまった</li>
+<li>直前に <a href="https://github.com/tikv/pprof-rs">pprof-rs</a> を試したが、使いこなせる自信が無かったので本番では使わなかった</li>
+<li>NewRelic APM, Rust にも対応してくれ〜〜</li>
+</ul>
+</li>
+<li>設定ファイルの管理
+<ul>
+<li>etckeeper というのがあるらしいので今度使ってみる</li>
+</ul>
+</li>
+<li>アプリケーションの並列処理
+<ul>
+<li>今回使わなかったが、もっとラフに入れていっても良かった気がする</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想">感想</h2>
+<p>予選突破できず悔しかったですが、ドチャクソ楽しかったです<br>
+誘う人いないので来年も一人枠を残してほしい&hellip;</p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 231 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>
