@@ -107,11 +107,11 @@
 &lt;ul&gt;
 &lt;li&gt;Rust で参加
 &lt;ul&gt;
-&lt;li&gt;これまで Python で参加していたが、幾分あまり書かないので読むのも書くのも脳死でできず辛かった&lt;/li&gt;
-&lt;li&gt;最近割と Rust を書く機会が多く、割と習熟できていたのでアプリケーション周りで詰まることは無くスムーズに進めれてよかった&lt;/li&gt;
+&lt;li&gt;これまで Python で参加していたが、あまり書かないので読むのも書くのも脳死でできず辛かった&lt;/li&gt;
+&lt;li&gt;最近割と Rust を書く機会が多く、割と習熟できていたのでアプリケーション周りで詰まることは無く良かった&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;事前に用意した Makefile のコマンド
+&lt;li&gt;事前に用意した Makefile
 &lt;ul&gt;
 &lt;li&gt;ほぼ必要な操作を網羅していて、それらが脳死でできるのでかなり楽だった&lt;/li&gt;
 &lt;li&gt;kataribe と pt-query-digest スゴイ&lt;/li&gt;
