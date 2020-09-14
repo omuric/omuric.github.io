@@ -19,8 +19,6 @@
       <guid>https://omuric.github.io/posts/isucon10-qualify/</guid>
       <description>&lt;h1 id=&#34;isucon-10-予選-参加記&#34;&gt;ISUCON 10 予選 参加記&lt;/h1&gt;
 &lt;p&gt;2020年 9月12日 (土) に開催された ISUCON 10 の予選に一人チームで Rust で参加しました&lt;br&gt;
-昨年/一昨年は会社の方とチームで参加していましたが、
-職が無になり誘える友達もいないのでぼっちで参加しました&lt;br&gt;
 予選突破のボーダーが 2158 点で、自分の最終結果は 1017 点でした&lt;br&gt;
 (&lt;a href=&#34;http://isucon.net/archives/55008744.html&#34;&gt;最終結果一覧&lt;/a&gt;)&lt;/p&gt;
 &lt;h2 id=&#34;事前準備&#34;&gt;事前準備&lt;/h2&gt;
@@ -51,9 +49,9 @@
 &lt;ul&gt;
 &lt;li&gt;sysctl, mysql, nginx に設定ファイルにいい感じの設定を入れる&lt;/li&gt;
 &lt;li&gt;スロークエリを確認しながら index を貼る&lt;/li&gt;
-&lt;li&gt;nazotte の幾何判定をアプリ内で行う
+&lt;li&gt;nazotte の内包判定をアプリケーション側で行う
 &lt;ul&gt;
-&lt;li&gt;幾何判定のために SQL クエリの発行が行われていたので修正&lt;/li&gt;
+&lt;li&gt;判定のために SQL クエリの発行が行われていたので修正&lt;/li&gt;
 &lt;li&gt;競プロっぽいなと思いつつ &lt;a href=&#34;https://www.nttpc.co.jp/technology/number_algorithm.html&#34;&gt;NTTPC さんの記事&lt;/a&gt; を写経した&lt;/li&gt;
 &lt;li&gt;絶対バグらせる気がしたが、オリジナルとAPI のレスポンスを比べて diff がなかったので恐らくバグってないはず (1ケースしか試してないけど&amp;hellip;) (ベンチも通ってるので多分大丈夫)&lt;/li&gt;
 &lt;/ul&gt;
