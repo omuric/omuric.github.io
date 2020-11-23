@@ -142,7 +142,7 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 <li>相手より自分のスコアが高い場合は評価値を <code>+INF - turn * N + score</code></li>
 <li>自分より相手のスコアが高い場合は評価値を <code>-INF - turn * N + score</code></li>
 </ul>
-<p>とした (N は十分に大きい値)<br>
+<p>とした (N は score より十分に大きい値)<br>
 できるだけ早くゲームを終わらせて、その上でスコアが高い状態を探すイメージ</p>
 <h3 id="相手側の探索">相手側の探索</h3>
 <p>相手の行動により自分の将来の行動が制限される場合がある<br>
@@ -187,8 +187,8 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 <li>key: <code>(操作集合, 使用済みの CAST, インベントリの tie-0)</code></li>
 <li>value: <code>スコア</code></li>
 </ul>
-<p>同一の key がメモに存在し、メモのほうがスコアが高ければその状態はそれ以上探索しないようにした<br>
-<code>操作集合</code> については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した<br>
+<p>同一の key がメモに存在し、<code>メモのスコア &gt;= スコア</code> であればその状態はそれ以上探索しないようにした<br>
+操作集合については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した<br>
 (遷移のたびに操作に対応したハッシュ値を足して更新する)</p>
 <h3 id="高速化">高速化</h3>
 <p>使用済み CAST, 取得済み LEARN などの集合を BitSet で管理するようにした<br>
@@ -285,7 +285,7 @@ clippy ありがとう</p>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 370 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 374 words in this page.
 	</div>
 </div>
 

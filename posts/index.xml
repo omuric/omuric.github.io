@@ -76,7 +76,7 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 &lt;li&gt;相手より自分のスコアが高い場合は評価値を &lt;code&gt;+INF - turn * N + score&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;自分より相手のスコアが高い場合は評価値を &lt;code&gt;-INF - turn * N + score&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;とした (N は十分に大きい値)&lt;br&gt;
+&lt;p&gt;とした (N は score より十分に大きい値)&lt;br&gt;
 できるだけ早くゲームを終わらせて、その上でスコアが高い状態を探すイメージ&lt;/p&gt;
 &lt;h3 id=&#34;相手側の探索&#34;&gt;相手側の探索&lt;/h3&gt;
 &lt;p&gt;相手の行動により自分の将来の行動が制限される場合がある&lt;br&gt;
@@ -121,8 +121,8 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 &lt;li&gt;key: &lt;code&gt;(操作集合, 使用済みの CAST, インベントリの tie-0)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;value: &lt;code&gt;スコア&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;同一の key がメモに存在し、メモのほうがスコアが高ければその状態はそれ以上探索しないようにした&lt;br&gt;
-&lt;code&gt;操作集合&lt;/code&gt; については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した&lt;br&gt;
+&lt;p&gt;同一の key がメモに存在し、&lt;code&gt;メモのスコア &amp;gt;= スコア&lt;/code&gt; であればその状態はそれ以上探索しないようにした&lt;br&gt;
+操作集合については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した&lt;br&gt;
 (遷移のたびに操作に対応したハッシュ値を足して更新する)&lt;/p&gt;
 &lt;h3 id=&#34;高速化&#34;&gt;高速化&lt;/h3&gt;
 &lt;p&gt;使用済み CAST, 取得済み LEARN などの集合を BitSet で管理するようにした&lt;br&gt;
