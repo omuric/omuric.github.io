@@ -32,7 +32,7 @@
 &lt;li&gt;20 は最低読む深さで調整の結果だが長過ぎる気もする&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;15 ターン以降は LEARN を遷移から外す
+&lt;li&gt;12 ターン以降は LEARN を遷移から外す
 &lt;ul&gt;
 &lt;li&gt;リプレイを見る限り後半 LEARN を必要としない場面が多いため探索効率を優先&lt;/li&gt;
 &lt;/ul&gt;
