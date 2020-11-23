@@ -170,7 +170,7 @@
       <description>&lt;h1 id=&#34;codingame-fall-challenge-2020-参加記&#34;&gt;Codingame Fall Challenge 2020 参加記&lt;/h1&gt;
 &lt;p&gt;2020年 11/12(木) ~ 11/23(月) に開催された &lt;a href=&#34;https://www.codingame.com/contests/fall-challenge-2020&#34;&gt;Codingame Fall Challenge 2020&lt;/a&gt; に参加しました&lt;br&gt;
 最終結果は 41/7043 位でした&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://omuric.github.io/images/codingame-fall-challenge-2020_result.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/omuric/blog/blob/master/resources/_gen/images/codingame-fall-challenge-2020_result.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;やったこと&#34;&gt;やったこと&lt;/h2&gt;
 &lt;h3 id=&#34;ビームサーチ&#34;&gt;ビームサーチ&lt;/h3&gt;
 &lt;ul&gt;
@@ -199,13 +199,13 @@
 &lt;ul&gt;
 &lt;li&gt;5 回目の BREW をまだ行っていなければ現在のインベントリを 「BREW でスコアに変換される素材」と判定
 &lt;ul&gt;
-&lt;li&gt;評価値に (tier-0 + tier-1 * 2 + tier-2 * 3 + tier-3 * 4) を加算&lt;/li&gt;
+&lt;li&gt;評価値に &lt;code&gt;(tier-0 + tier-1 * 2 + tier-2 * 3 + tier-3 * 4)&lt;/code&gt; を加算&lt;/li&gt;
 &lt;li&gt;実際には終了後まで残る素材もあるが判定できないので無視&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;5 回目の BREW を行っていれば「ゲーム終了後まで残る素材」と判定
 &lt;ul&gt;
-&lt;li&gt;評価値に (tier-1 + tier-2 + tier-3) を加算&lt;/li&gt;
+&lt;li&gt;評価値に &lt;code&gt;(tier-1 + tier-2 + tier-3)&lt;/code&gt; を加算&lt;/li&gt;
 &lt;li&gt;実際にはこの中から一部が 「BREW でスコアに変換される素材」になるが判定できないので無視&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -239,15 +239,14 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 &lt;li&gt;相手がゲームを終了させた場合は、こちらもゲーム終了とみなしそれ以降のターンの探索を行わない&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;分かりづらいが、N ターン目の自分の状態を評価する場合は N ターン目の相手の状態を参照する&lt;br&gt;
-探索で得られた結果とは異なる操作を行われた場合のことを考えるとあまり良い手ではなかったかも&lt;br&gt;
-N は場合に応じて 5, 10 を使い分けた&lt;/p&gt;
+探索で得られた結果とは異なる操作を行われた場合のことを考えるとあまり良い手ではなかったかも&lt;/p&gt;
 &lt;h3 id=&#34;重複盤面の排除&#34;&gt;重複盤面の排除&lt;/h3&gt;
 &lt;p&gt;ビームサーチの探索の中で同一の状態を複数回探索してしまうのを防ぐために、以下のような形で重複盤面の排除を行った&lt;/p&gt;
 &lt;p&gt;以下の値があれば同一な状態かを判定できる&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;操作列 (順不同)
 &lt;ul&gt;
-&lt;li&gt;操作集合が同一である場合、インベントリの状態・スコアは例外を除いて同一になる&lt;/li&gt;
+&lt;li&gt;操作集合が同一である場合、以下を除いて同一な状態になる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;使用済みの CAST
@@ -268,16 +267,16 @@ N は場合に応じて 5, 10 を使い分けた&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;スコアが低いものは探索する必要がないと判断し、以下の key, value でメモ化した&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;key: ( &lt;code&gt;操作列 (順不同)&lt;/code&gt; , &lt;code&gt;使用済みの CAST&lt;/code&gt; , &lt;code&gt;インベントリの tie-0 の個数&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;key: &lt;code&gt;( 操作列 (順不同) , 使用済みの CAST , インベントリの tie-0 の個数 )&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;value: &lt;code&gt;スコア&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;同一の key がメモに存在し、メモのほうがスコアが高ければその状態はそれ以上探索させないようにした&lt;br&gt;
-&lt;code&gt;操作列 (順不同)&lt;/code&gt; については各操作をハッシュに変換して足し合わせたものを用意することで解決した&lt;br&gt;
-(遷移のたびに操作に対応したハッシュを足して更新する)&lt;/p&gt;
+&lt;code&gt;操作列 (順不同)&lt;/code&gt; については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した&lt;br&gt;
+(遷移のたびに操作に対応したハッシュ値を足して更新する)&lt;/p&gt;
 &lt;h3 id=&#34;高速化&#34;&gt;高速化&lt;/h3&gt;
 &lt;p&gt;使用済み CAST, 取得済み LEARN などの集合を BitSet で管理するようにした&lt;br&gt;
 (事前に ID を圧縮しておくことで 32bit の整数値に十分収まる)&lt;br&gt;
-また BREW のボーナス計算用や LEARN の Tax の計算のためのカウンターも 32bit の整数値に収まるように実装した&lt;/p&gt;
+また BREW のボーナス計算用や LEARN の先読み税の計算のためのカウンターも 32bit の整数値に収まるように実装した&lt;/p&gt;
 &lt;h2 id=&#34;やったけどだめだったこと&#34;&gt;やったけどだめだったこと&lt;/h2&gt;
 &lt;h3 id=&#34;並列化&#34;&gt;並列化&lt;/h3&gt;
 &lt;p&gt;コンテスト中 twitter で Codingame は並列化可能っぽい？というのを見かけたので mpsc を使いビームサーチの並列化を試したが、  実際に動かした際に探索回数が並列化前よりむしろ悪化した為、Codingame の実行環境ではマルチスレッドが使用できないと判断し、あまり調査せずそこで切り上げてしまった&lt;br&gt;
@@ -315,22 +314,18 @@ Rust だとほぼバグなく実装に専念できたので、マジで良い言
     S: Clone,
 {
     &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;cmp&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self, other: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Self&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Ordering&lt;/span&gt; {
-        other
-            .value
-            .partial_cmp(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self.value)
-            .expect(
-                format&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(
-                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Failed compare f64 (value0={}, value1={})&amp;#34;&lt;/span&gt;,
-                    other.value, self.value,
-                )
-                .as_str(),
+        self.value.partial_cmp(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;other.value).expect(
+            format&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Failed compare f64 (value0={}, value1={})&amp;#34;&lt;/span&gt;,
+                other.value, self.value,
             )
-            .reverse()
+            .as_str(),
+        )
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;自分としては比較に失敗した場合のみエラー用の文字列が生成されてほしい気持ちだったんですが、&lt;br&gt;
 上記だと常に文字列が生成されるコードになっています&lt;br&gt;
-そのためビームサーチ内で発生する状態比較のたびに上記のエラー文の生成が走りパフォーマンスが劇的に低下していました&lt;br&gt;
+そのためビームサーチ内の状態比較のたびに上記のエラー文の生成が走りパフォーマンスが劇的に低下していました&lt;br&gt;
 最終的に以下に修正して事なきを得ました&lt;br&gt;
 以下のコードでは比較失敗時のみエラー文の生成が行われます&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;S&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; Ord &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; StateWrapper&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;S&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
@@ -338,16 +333,13 @@ Rust だとほぼバグなく実装に専念できたので、マジで良い言
     S: Clone,
 {
     &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;cmp&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self, other: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Self&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Ordering&lt;/span&gt; {
-        other
-            .value
-            .partial_cmp(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self.value)
+        self.value.partial_cmp(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;other.value)
             .unwrap_or_else(&lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; {
                 panic&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(
                     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Failed compare f64 (value0={}, value1={})&amp;#34;&lt;/span&gt;,
-                    other.value, self.value,
+                    self.value, other.value,
                 )
             })
-            .reverse()
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/rust-lang/rust-clippy&#34;&gt;rust-clippy&lt;/a&gt; という rust の静的解析ツールがあり、 Legend に上がった後になんとなくかけて見たんですが、指摘事項を直した後にベンチマークを取ると異様に速度が向上しており糞ビックリという話でした&lt;br&gt;
