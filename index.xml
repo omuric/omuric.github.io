@@ -49,13 +49,13 @@
 &lt;ul&gt;
 &lt;li&gt;5 回目の BREW をまだ行っていなければ現在のインベントリを 「BREW でスコアに変換される素材」と判定
 &lt;ul&gt;
-&lt;li&gt;評価値に &lt;code&gt;(tier-0 + tier-1 * 2 + tier-2 * 3 + tier-3 * 4)&lt;/code&gt; を加算&lt;/li&gt;
+&lt;li&gt;評価値は &lt;code&gt;score + (tier-0 + tier-1 * 2 + tier-2 * 3 + tier-3 * 4)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;実際には終了後まで残る素材もあるが判定できないので無視&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;5 回目の BREW を行っていれば「ゲーム終了後まで残る素材」と判定
 &lt;ul&gt;
-&lt;li&gt;評価値に &lt;code&gt;(tier-1 + tier-2 + tier-3)&lt;/code&gt; を加算&lt;/li&gt;
+&lt;li&gt;評価値は &lt;code&gt;score + (tier-1 + tier-2 + tier-3)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;実際にはこの中から一部が 「BREW でスコアに変換される素材」になるが判定できないので無視&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -86,42 +86,43 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 &lt;ul&gt;
 &lt;li&gt;相手が使用した BREW は遷移から外す&lt;/li&gt;
 &lt;li&gt;相手が使用した BREW を自分が使用していた場合は妨害が成功したとみなして評価値を少し良くする&lt;/li&gt;
-&lt;li&gt;相手がゲームを終了させた場合は、こちらもゲーム終了とみなしそれ以降のターンの探索を行わない&lt;/li&gt;
+&lt;li&gt;相手がゲームを終了させた場合はこちらもゲーム終了とみなす&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;分かりづらいが、N ターン目の自分の状態を評価する場合は N ターン目の相手の状態を参照する&lt;br&gt;
+&lt;p&gt;N ターン目の自分の状態を評価する場合は N ターン目の相手の状態を参照する&lt;br&gt;
+ゲーム終了とみなした状態はそれ以上探索しない&lt;br&gt;
 探索で得られた結果とは異なる操作を行われた場合のことを考えるとあまり良い手ではなかったかも&lt;/p&gt;
 &lt;h3 id=&#34;重複盤面の排除&#34;&gt;重複盤面の排除&lt;/h3&gt;
 &lt;p&gt;ビームサーチの探索の中で同一の状態を複数回探索してしまうのを防ぐために、以下のような形で重複盤面の排除を行った&lt;/p&gt;
 &lt;p&gt;以下の値があれば同一な状態かを判定できる&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;操作列 (順不同)
+&lt;li&gt;操作集合
 &lt;ul&gt;
-&lt;li&gt;操作集合が同一である場合、以下を除いて同一な状態になる&lt;/li&gt;
+&lt;li&gt;同一である場合、例外を除いて同一な状態になる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;使用済みの CAST
 &lt;ul&gt;
-&lt;li&gt;REST のタイミングによって変化&lt;/li&gt;
+&lt;li&gt;操作集合が同一でも REST のタイミングによって変化&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;インベントリの tier-0 の個数
+&lt;li&gt;インベントリの tier-0
 &lt;ul&gt;
-&lt;li&gt;LEARN のタイミングによって変化&lt;/li&gt;
+&lt;li&gt;操作集合が同一でも LEARN のタイミングによって変化&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;スコア
 &lt;ul&gt;
-&lt;li&gt;BREW のタイミングによって変化&lt;/li&gt;
+&lt;li&gt;操作集合が同一でも BREW のタイミングによって変化&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;スコアが低いものは探索する必要がないと判断し、以下の key, value でメモ化した&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;key: &lt;code&gt;( 操作列 (順不同) , 使用済みの CAST , インベントリの tie-0 の個数 )&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;key: &lt;code&gt;(操作集合, 使用済みの CAST, インベントリの tie-0)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;value: &lt;code&gt;スコア&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;同一の key がメモに存在し、メモのほうがスコアが高ければその状態はそれ以上探索させないようにした&lt;br&gt;
-&lt;code&gt;操作列 (順不同)&lt;/code&gt; については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した&lt;br&gt;
+&lt;p&gt;同一の key がメモに存在し、メモのほうがスコアが高ければその状態はそれ以上探索しないようにした&lt;br&gt;
+&lt;code&gt;操作集合&lt;/code&gt; については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した&lt;br&gt;
 (遷移のたびに操作に対応したハッシュ値を足して更新する)&lt;/p&gt;
 &lt;h3 id=&#34;高速化&#34;&gt;高速化&lt;/h3&gt;
 &lt;p&gt;使用済み CAST, 取得済み LEARN などの集合を BitSet で管理するようにした&lt;br&gt;

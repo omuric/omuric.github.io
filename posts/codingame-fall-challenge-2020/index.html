@@ -115,13 +115,13 @@
 <ul>
 <li>5 回目の BREW をまだ行っていなければ現在のインベントリを 「BREW でスコアに変換される素材」と判定
 <ul>
-<li>評価値に <code>(tier-0 + tier-1 * 2 + tier-2 * 3 + tier-3 * 4)</code> を加算</li>
+<li>評価値は <code>score + (tier-0 + tier-1 * 2 + tier-2 * 3 + tier-3 * 4)</code></li>
 <li>実際には終了後まで残る素材もあるが判定できないので無視</li>
 </ul>
 </li>
 <li>5 回目の BREW を行っていれば「ゲーム終了後まで残る素材」と判定
 <ul>
-<li>評価値に <code>(tier-1 + tier-2 + tier-3)</code> を加算</li>
+<li>評価値は <code>score + (tier-1 + tier-2 + tier-3)</code></li>
 <li>実際にはこの中から一部が 「BREW でスコアに変換される素材」になるが判定できないので無視</li>
 </ul>
 </li>
@@ -152,42 +152,43 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 <ul>
 <li>相手が使用した BREW は遷移から外す</li>
 <li>相手が使用した BREW を自分が使用していた場合は妨害が成功したとみなして評価値を少し良くする</li>
-<li>相手がゲームを終了させた場合は、こちらもゲーム終了とみなしそれ以降のターンの探索を行わない</li>
+<li>相手がゲームを終了させた場合はこちらもゲーム終了とみなす</li>
 </ul>
-<p>分かりづらいが、N ターン目の自分の状態を評価する場合は N ターン目の相手の状態を参照する<br>
+<p>N ターン目の自分の状態を評価する場合は N ターン目の相手の状態を参照する<br>
+ゲーム終了とみなした状態はそれ以上探索しない<br>
 探索で得られた結果とは異なる操作を行われた場合のことを考えるとあまり良い手ではなかったかも</p>
 <h3 id="重複盤面の排除">重複盤面の排除</h3>
 <p>ビームサーチの探索の中で同一の状態を複数回探索してしまうのを防ぐために、以下のような形で重複盤面の排除を行った</p>
 <p>以下の値があれば同一な状態かを判定できる</p>
 <ul>
-<li>操作列 (順不同)
+<li>操作集合
 <ul>
-<li>操作集合が同一である場合、以下を除いて同一な状態になる</li>
+<li>同一である場合、例外を除いて同一な状態になる</li>
 </ul>
 </li>
 <li>使用済みの CAST
 <ul>
-<li>REST のタイミングによって変化</li>
+<li>操作集合が同一でも REST のタイミングによって変化</li>
 </ul>
 </li>
-<li>インベントリの tier-0 の個数
+<li>インベントリの tier-0
 <ul>
-<li>LEARN のタイミングによって変化</li>
+<li>操作集合が同一でも LEARN のタイミングによって変化</li>
 </ul>
 </li>
 <li>スコア
 <ul>
-<li>BREW のタイミングによって変化</li>
+<li>操作集合が同一でも BREW のタイミングによって変化</li>
 </ul>
 </li>
 </ul>
 <p>スコアが低いものは探索する必要がないと判断し、以下の key, value でメモ化した</p>
 <ul>
-<li>key: <code>( 操作列 (順不同) , 使用済みの CAST , インベントリの tie-0 の個数 )</code></li>
+<li>key: <code>(操作集合, 使用済みの CAST, インベントリの tie-0)</code></li>
 <li>value: <code>スコア</code></li>
 </ul>
-<p>同一の key がメモに存在し、メモのほうがスコアが高ければその状態はそれ以上探索させないようにした<br>
-<code>操作列 (順不同)</code> については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した<br>
+<p>同一の key がメモに存在し、メモのほうがスコアが高ければその状態はそれ以上探索しないようにした<br>
+<code>操作集合</code> については各操作をハッシュ値に変換して足し合わせたものを用意することで解決した<br>
 (遷移のたびに操作に対応したハッシュ値を足して更新する)</p>
 <h3 id="高速化">高速化</h3>
 <p>使用済み CAST, 取得済み LEARN などの集合を BitSet で管理するようにした<br>
@@ -284,7 +285,7 @@ clippy ありがとう</p>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 373 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 370 words in this page.
 	</div>
 </div>
 
