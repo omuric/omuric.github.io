@@ -6,171 +6,21 @@
     <description>Recent content on o</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 14 Sep 2020 16:33:29 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2020 00:40:00 +0900</lastBuildDate>
     
 	<atom:link href="https://omuric.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>ISUCON 10 予選 参加記</title>
-      <link>https://omuric.github.io/posts/isucon10-qualify/</link>
-      <pubDate>Mon, 14 Sep 2020 16:33:29 +0900</pubDate>
-      
-      <guid>https://omuric.github.io/posts/isucon10-qualify/</guid>
-      <description>&lt;h1 id=&#34;isucon-10-予選-参加記&#34;&gt;ISUCON 10 予選 参加記&lt;/h1&gt;
-&lt;p&gt;2020年 9月12日 (土) に開催された ISUCON 10 の予選に一人チームで Rust で参加しました&lt;br&gt;
-予選突破のボーダーが 2158 点で、自分の最終結果は 1017 点でした&lt;br&gt;
-(&lt;a href=&#34;http://isucon.net/archives/55008744.html&#34;&gt;最終結果一覧&lt;/a&gt;)&lt;/p&gt;
-&lt;h2 id=&#34;事前準備&#34;&gt;事前準備&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;ISUCON 9 の参照実装を Rust で書き直す (未完)
-&lt;ul&gt;
-&lt;li&gt;actix-web + sqlx で実装&lt;/li&gt;
-&lt;li&gt;半分ぐらい実装して、ライブラリは理解した気持ちになったのと実装がしんどくなったので諦めた&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tohutohu/isucon9/blob/master/Makefile&#34;&gt;ISUCON 9 の予選1日目一位の方の Makefile&lt;/a&gt; をパクる
-&lt;ul&gt;
-&lt;li&gt;Makefile 使うのが辛かったので &lt;a href=&#34;https://github.com/sagiegurari/cargo-make&#34;&gt;cargo-make&lt;/a&gt; で書き直した&lt;/li&gt;
-&lt;li&gt;オリジナルはサーバ内で使う想定になっているが、全サーバを一度に操作したかったのでローカルから各サーバに ssh して操作する形に書き直した&lt;/li&gt;
-&lt;li&gt;自分の運用に合わせて幾つかコマンドを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;設定ファイルの管理
-&lt;ul&gt;
-&lt;li&gt;各サーバの設定ファイル (hosts, my.cnf, nginx.conf, sysctl.cnf) をローカルで git 管理するように&lt;/li&gt;
-&lt;li&gt;nginx.conf と my.cnf はデプロイ前にバリデーションをかけるようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;sysctl, mysql, nginx のいい感じの設定を調べる&lt;/li&gt;
-&lt;li&gt;nginx でのロードバランシング、mysql のレプリケーションを素振り&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;当日やったこと&#34;&gt;当日やったこと&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;sysctl, mysql, nginx に設定ファイルにいい感じの設定を入れる&lt;/li&gt;
-&lt;li&gt;スロークエリを確認しながら index を貼る&lt;/li&gt;
-&lt;li&gt;nazotte の内包判定をアプリケーション側で行う
-&lt;ul&gt;
-&lt;li&gt;判定のために SQL クエリの発行が行われていたので修正&lt;/li&gt;
-&lt;li&gt;競プロっぽいなと思いつつ &lt;a href=&#34;https://www.nttpc.co.jp/technology/number_algorithm.html&#34;&gt;NTTPC さんの記事&lt;/a&gt; を写経した&lt;/li&gt;
-&lt;li&gt;絶対バグらせる気がしたが、オリジナルとAPI のレスポンスを比べて diff がなかったので恐らくバグってないはず (1ケースしか試してないけど&amp;hellip;) (ベンチも通ってるので多分大丈夫)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;物件のレコメンドのクエリを修正
-&lt;ul&gt;
-&lt;li&gt;ドアサイズを絞るために無駄な OR があったので消した
-&lt;ul&gt;
-&lt;li&gt;width, height の大きい方を door_size_0, 小さい方を door_size_1 としてカラムを追加&lt;/li&gt;
-&lt;li&gt;椅子の w, h, z の一番小さいものを door_size_1 と比較, 二番目に小さいものを door_size_0 と比較する&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;結局いい感じに index に乗らなかった (SQL の知識が足らずここで諦めてしまった)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Bot を nginx で弾く
-&lt;ul&gt;
-&lt;li&gt;ドキュメント記載の Bot の正規表現は PHP preg_match() に準拠してそうだった (勘) ので、&lt;a href=&#34;http://okumocchi.jp/php/re.php&#34;&gt;php 正規表現チェッカー&lt;/a&gt; で確認しながらテストした&lt;/li&gt;
-&lt;li&gt;nginx の if で使える正規表現の理解が足りず、弾くとまずいものまで弾きそうだったので、幾つかのパターンは無視した&lt;/li&gt;
-&lt;li&gt;actix-web の Guard を一瞬使おうとしたが正規表現に対応して無かったので諦めた&lt;/li&gt;
-&lt;li&gt;スコアに影響するパス ( /api/chair/buy/{id} , /api/estate/req_doc/{id}) は Bot でも通すようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;サーバ構成の変更
-&lt;ul&gt;
-&lt;li&gt;mysql の CPU 使用率が 90 % ぐらいで張り付いていたので、DB の分割を試したが上手く行かず
-&lt;ul&gt;
-&lt;li&gt;Write 1 台, Read 2台でレプリケーションを試したが、遅延のためかベンチマークが通らず&amp;hellip; (時間が足らずちゃんと確認できてないので別原因かも)&lt;/li&gt;
-&lt;li&gt;アプリケーションの修正も含めてかなり無駄に時間を使ってしまった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;仕方ないので以下の構成で妥協した
-&lt;ul&gt;
-&lt;li&gt;1: nginx + app&lt;/li&gt;
-&lt;li&gt;2: app&lt;/li&gt;
-&lt;li&gt;3: mysql&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;テーブル毎に DB 分割思いつきたかった&amp;hellip; (悲しい)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;再起動試験
-&lt;ul&gt;
-&lt;li&gt;不要なサービスの自動起動を無効にして、全台再起動後にテスト&lt;/li&gt;
-&lt;li&gt;コンテスト終了後の再テストで出たスコアが最終結果になると勘違いしており、ここで下振れたスコアのまま放置してしまった&lt;br&gt;
-(もともと 1240 点ぐらいで -200 点ぐらい下振れてて悲しかったが、結局予選通ってないのでまあ)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;良かったこと&#34;&gt;良かったこと&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Rust で参加
-&lt;ul&gt;
-&lt;li&gt;これまで Python で参加していたが、あまり書かないので読むのも書くのも脳死でできず辛かった&lt;/li&gt;
-&lt;li&gt;最近割と Rust を書く機会が多く、割と習熟できていたのでアプリケーション周りで詰まることは無く良かった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;事前に用意した Makefile
-&lt;ul&gt;
-&lt;li&gt;ほぼ必要な操作を網羅していて、それらが脳死でできるのでかなり楽だった&lt;/li&gt;
-&lt;li&gt;kataribe と pt-query-digest スゴイ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;一人参加
-&lt;ul&gt;
-&lt;li&gt;必然的にすべての部分を見ないと行けないので、自分に足りない部分が明確になってよかった&lt;/li&gt;
-&lt;li&gt;コミュニケーションコストが無なのでそこはかなり楽だった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;反省点&#34;&gt;反省点&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;SQL 周りの知識不足
-&lt;ul&gt;
-&lt;li&gt;スロークエリを直す作業で、なかなか index に乗ってくれず辛かった&lt;/li&gt;
-&lt;li&gt;作業時間的にもここがボトルネックになっていた&lt;/li&gt;
-&lt;li&gt;データベーススペシャリスト試験受けるか&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;インフラ周りの設定の知識不足
-&lt;ul&gt;
-&lt;li&gt;パラメータが与える影響の理解が不足していて、問題に応じた調整が全然できなかった&lt;/li&gt;
-&lt;li&gt;過去問で練習したい&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Rust のパフォーマンス測定
-&lt;ul&gt;
-&lt;li&gt;いい感じに測定する方法がわからず今回は諦めてしまった&lt;/li&gt;
-&lt;li&gt;直前に &lt;a href=&#34;https://github.com/tikv/pprof-rs&#34;&gt;pprof-rs&lt;/a&gt; を試したが、使いこなせる自信が無かったので本番では使わなかった&lt;/li&gt;
-&lt;li&gt;NewRelic APM, Rust にも対応してくれ〜〜&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;設定ファイルの管理
-&lt;ul&gt;
-&lt;li&gt;etckeeper というのがあるらしいので今度使ってみる&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;アプリケーションの並列処理
-&lt;ul&gt;
-&lt;li&gt;今回使わなかったが、もっとラフに入れていっても良かった気がする&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;感想&#34;&gt;感想&lt;/h2&gt;
-&lt;p&gt;予選突破できず悔しかったですが、ドチャクソ楽しかったです&lt;br&gt;
-誘う人いないので来年も一人枠を残してほしい&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Codingame Fall Challenge 2020 参加記</title>
       <link>https://omuric.github.io/posts/codingame-fall-challenge-2020/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 Nov 2020 00:40:00 +0900</pubDate>
       
       <guid>https://omuric.github.io/posts/codingame-fall-challenge-2020/</guid>
       <description>&lt;h1 id=&#34;codingame-fall-challenge-2020-参加記&#34;&gt;Codingame Fall Challenge 2020 参加記&lt;/h1&gt;
 &lt;p&gt;2020年 11/12(木) ~ 11/23(月) に開催された &lt;a href=&#34;https://www.codingame.com/contests/fall-challenge-2020&#34;&gt;Codingame Fall Challenge 2020&lt;/a&gt; に参加しました&lt;br&gt;
 最終結果は 41/7043 位でした&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/omuric/blog/blob/master/resources/_gen/images/codingame-fall-challenge-2020_result.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/omuric/blog/master/resources/_gen/images/codingame-fall-challenge-2020_result.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;やったこと&#34;&gt;やったこと&lt;/h2&gt;
 &lt;h3 id=&#34;ビームサーチ&#34;&gt;ビームサーチ&lt;/h3&gt;
 &lt;ul&gt;
@@ -344,6 +194,156 @@ Rust だとほぼバグなく実装に専念できたので、マジで良い言
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/rust-lang/rust-clippy&#34;&gt;rust-clippy&lt;/a&gt; という rust の静的解析ツールがあり、 Legend に上がった後になんとなくかけて見たんですが、指摘事項を直した後にベンチマークを取ると異様に速度が向上しており糞ビックリという話でした&lt;br&gt;
 clippy ありがとう&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ISUCON 10 予選 参加記</title>
+      <link>https://omuric.github.io/posts/isucon10-qualify/</link>
+      <pubDate>Mon, 14 Sep 2020 16:33:29 +0900</pubDate>
+      
+      <guid>https://omuric.github.io/posts/isucon10-qualify/</guid>
+      <description>&lt;h1 id=&#34;isucon-10-予選-参加記&#34;&gt;ISUCON 10 予選 参加記&lt;/h1&gt;
+&lt;p&gt;2020年 9月12日 (土) に開催された ISUCON 10 の予選に一人チームで Rust で参加しました&lt;br&gt;
+予選突破のボーダーが 2158 点で、自分の最終結果は 1017 点でした&lt;br&gt;
+(&lt;a href=&#34;http://isucon.net/archives/55008744.html&#34;&gt;最終結果一覧&lt;/a&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;事前準備&#34;&gt;事前準備&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ISUCON 9 の参照実装を Rust で書き直す (未完)
+&lt;ul&gt;
+&lt;li&gt;actix-web + sqlx で実装&lt;/li&gt;
+&lt;li&gt;半分ぐらい実装して、ライブラリは理解した気持ちになったのと実装がしんどくなったので諦めた&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tohutohu/isucon9/blob/master/Makefile&#34;&gt;ISUCON 9 の予選1日目一位の方の Makefile&lt;/a&gt; をパクる
+&lt;ul&gt;
+&lt;li&gt;Makefile 使うのが辛かったので &lt;a href=&#34;https://github.com/sagiegurari/cargo-make&#34;&gt;cargo-make&lt;/a&gt; で書き直した&lt;/li&gt;
+&lt;li&gt;オリジナルはサーバ内で使う想定になっているが、全サーバを一度に操作したかったのでローカルから各サーバに ssh して操作する形に書き直した&lt;/li&gt;
+&lt;li&gt;自分の運用に合わせて幾つかコマンドを追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;設定ファイルの管理
+&lt;ul&gt;
+&lt;li&gt;各サーバの設定ファイル (hosts, my.cnf, nginx.conf, sysctl.cnf) をローカルで git 管理するように&lt;/li&gt;
+&lt;li&gt;nginx.conf と my.cnf はデプロイ前にバリデーションをかけるようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;sysctl, mysql, nginx のいい感じの設定を調べる&lt;/li&gt;
+&lt;li&gt;nginx でのロードバランシング、mysql のレプリケーションを素振り&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;当日やったこと&#34;&gt;当日やったこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;sysctl, mysql, nginx に設定ファイルにいい感じの設定を入れる&lt;/li&gt;
+&lt;li&gt;スロークエリを確認しながら index を貼る&lt;/li&gt;
+&lt;li&gt;nazotte の内包判定をアプリケーション側で行う
+&lt;ul&gt;
+&lt;li&gt;判定のために SQL クエリの発行が行われていたので修正&lt;/li&gt;
+&lt;li&gt;競プロっぽいなと思いつつ &lt;a href=&#34;https://www.nttpc.co.jp/technology/number_algorithm.html&#34;&gt;NTTPC さんの記事&lt;/a&gt; を写経した&lt;/li&gt;
+&lt;li&gt;絶対バグらせる気がしたが、オリジナルとAPI のレスポンスを比べて diff がなかったので恐らくバグってないはず (1ケースしか試してないけど&amp;hellip;) (ベンチも通ってるので多分大丈夫)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;物件のレコメンドのクエリを修正
+&lt;ul&gt;
+&lt;li&gt;ドアサイズを絞るために無駄な OR があったので消した
+&lt;ul&gt;
+&lt;li&gt;width, height の大きい方を door_size_0, 小さい方を door_size_1 としてカラムを追加&lt;/li&gt;
+&lt;li&gt;椅子の w, h, z の一番小さいものを door_size_1 と比較, 二番目に小さいものを door_size_0 と比較する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;結局いい感じに index に乗らなかった (SQL の知識が足らずここで諦めてしまった)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Bot を nginx で弾く
+&lt;ul&gt;
+&lt;li&gt;ドキュメント記載の Bot の正規表現は PHP preg_match() に準拠してそうだった (勘) ので、&lt;a href=&#34;http://okumocchi.jp/php/re.php&#34;&gt;php 正規表現チェッカー&lt;/a&gt; で確認しながらテストした&lt;/li&gt;
+&lt;li&gt;nginx の if で使える正規表現の理解が足りず、弾くとまずいものまで弾きそうだったので、幾つかのパターンは無視した&lt;/li&gt;
+&lt;li&gt;actix-web の Guard を一瞬使おうとしたが正規表現に対応して無かったので諦めた&lt;/li&gt;
+&lt;li&gt;スコアに影響するパス ( /api/chair/buy/{id} , /api/estate/req_doc/{id}) は Bot でも通すようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;サーバ構成の変更
+&lt;ul&gt;
+&lt;li&gt;mysql の CPU 使用率が 90 % ぐらいで張り付いていたので、DB の分割を試したが上手く行かず
+&lt;ul&gt;
+&lt;li&gt;Write 1 台, Read 2台でレプリケーションを試したが、遅延のためかベンチマークが通らず&amp;hellip; (時間が足らずちゃんと確認できてないので別原因かも)&lt;/li&gt;
+&lt;li&gt;アプリケーションの修正も含めてかなり無駄に時間を使ってしまった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;仕方ないので以下の構成で妥協した
+&lt;ul&gt;
+&lt;li&gt;1: nginx + app&lt;/li&gt;
+&lt;li&gt;2: app&lt;/li&gt;
+&lt;li&gt;3: mysql&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;テーブル毎に DB 分割思いつきたかった&amp;hellip; (悲しい)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;再起動試験
+&lt;ul&gt;
+&lt;li&gt;不要なサービスの自動起動を無効にして、全台再起動後にテスト&lt;/li&gt;
+&lt;li&gt;コンテスト終了後の再テストで出たスコアが最終結果になると勘違いしており、ここで下振れたスコアのまま放置してしまった&lt;br&gt;
+(もともと 1240 点ぐらいで -200 点ぐらい下振れてて悲しかったが、結局予選通ってないのでまあ)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;良かったこと&#34;&gt;良かったこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Rust で参加
+&lt;ul&gt;
+&lt;li&gt;これまで Python で参加していたが、あまり書かないので読むのも書くのも脳死でできず辛かった&lt;/li&gt;
+&lt;li&gt;最近割と Rust を書く機会が多く、割と習熟できていたのでアプリケーション周りで詰まることは無く良かった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;事前に用意した Makefile
+&lt;ul&gt;
+&lt;li&gt;ほぼ必要な操作を網羅していて、それらが脳死でできるのでかなり楽だった&lt;/li&gt;
+&lt;li&gt;kataribe と pt-query-digest スゴイ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;一人参加
+&lt;ul&gt;
+&lt;li&gt;必然的にすべての部分を見ないと行けないので、自分に足りない部分が明確になってよかった&lt;/li&gt;
+&lt;li&gt;コミュニケーションコストが無なのでそこはかなり楽だった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;反省点&#34;&gt;反省点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL 周りの知識不足
+&lt;ul&gt;
+&lt;li&gt;スロークエリを直す作業で、なかなか index に乗ってくれず辛かった&lt;/li&gt;
+&lt;li&gt;作業時間的にもここがボトルネックになっていた&lt;/li&gt;
+&lt;li&gt;データベーススペシャリスト試験受けるか&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;インフラ周りの設定の知識不足
+&lt;ul&gt;
+&lt;li&gt;パラメータが与える影響の理解が不足していて、問題に応じた調整が全然できなかった&lt;/li&gt;
+&lt;li&gt;過去問で練習したい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Rust のパフォーマンス測定
+&lt;ul&gt;
+&lt;li&gt;いい感じに測定する方法がわからず今回は諦めてしまった&lt;/li&gt;
+&lt;li&gt;直前に &lt;a href=&#34;https://github.com/tikv/pprof-rs&#34;&gt;pprof-rs&lt;/a&gt; を試したが、使いこなせる自信が無かったので本番では使わなかった&lt;/li&gt;
+&lt;li&gt;NewRelic APM, Rust にも対応してくれ〜〜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;設定ファイルの管理
+&lt;ul&gt;
+&lt;li&gt;etckeeper というのがあるらしいので今度使ってみる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;アプリケーションの並列処理
+&lt;ul&gt;
+&lt;li&gt;今回使わなかったが、もっとラフに入れていっても良かった気がする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;感想&#34;&gt;感想&lt;/h2&gt;
+&lt;p&gt;予選突破できず悔しかったですが、ドチャクソ楽しかったです&lt;br&gt;
+誘う人いないので来年も一人枠を残してほしい&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     
