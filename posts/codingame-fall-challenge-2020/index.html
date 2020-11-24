@@ -159,7 +159,7 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 探索で得られた結果とは異なる操作を行われた場合のことを考えるとあまり良い手ではなかったかも</p>
 <h3 id="重複盤面の排除">重複盤面の排除</h3>
 <p>ビームサーチの探索の中で同一の状態を複数回探索してしまうのを防ぐために、以下のような形で重複盤面の排除を行った</p>
-<p>以下の値があれば同一な状態かを判定できる</p>
+<p>以下の値で同一な状態かを判定する</p>
 <ul>
 <li>操作集合
 <ul>
@@ -190,7 +190,8 @@ LEARN してから CAST する操作を優先的に探索する為に以下の�
 <p>同一の key がメモに存在し、<code>メモのスコア &gt;= スコア</code> であればその状態はそれ以上探索しないようにした<br>
 操作集合については各操作をハッシュ値に変換して足し合わせたものを用意することで計算が重くならないようにした<br>
 (遷移のたびに操作に対応したハッシュ値を足して更新する)</p>
-<p>操作集合が異なるが同一の状態という場合に対応できないので良くなかったかも</p>
+<p>操作順序による無駄な探索を減らすために導入したが、
+操作集合が異なるが同一の状態という場合に対応できないので改善の余地がありそう</p>
 <h3 id="高速化">高速化</h3>
 <p>使用済み CAST, 取得済み LEARN などの集合を BitSet で管理するようにした<br>
 (事前に ID を圧縮しておくことで 32bit の整数値に十分収まる)<br>
@@ -287,7 +288,7 @@ clippy ありがとう</p>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 382 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 383 words in this page.
 	</div>
 </div>
 
