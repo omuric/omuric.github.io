@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>o</title><link>https://omuric.github.io/</link><description>Recent content on o</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 24 Nov 2020 00:40:00 +0900</lastBuildDate><atom:link href="https://omuric.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Codingame Fall Challenge 2020 参加記</title><link>https://omuric.github.io/posts/codingame-fall-challenge-2020/</link><pubDate>Tue, 24 Nov 2020 00:40:00 +0900</pubDate><guid>https://omuric.github.io/posts/codingame-fall-challenge-2020/</guid><description>&lt;h1 id="codingame-fall-challenge-2020-参加記">Codingame Fall Challenge 2020 参加記&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>o</title><link>https://omuric.github.io/</link><description>Recent content on o</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 24 Jul 2021 20:55:00 +0900</lastBuildDate><atom:link href="https://omuric.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>ICFP-PC 2021 参加記</title><link>https://omuric.github.io/posts/icfp-pc2021/</link><pubDate>Sat, 24 Jul 2021 20:55:00 +0900</pubDate><guid>https://omuric.github.io/posts/icfp-pc2021/</guid><description>&lt;h1 id="icfp-pc-2021-参加記">ICFP-PC 2021 参加記&lt;/h1>
+&lt;p>2021年 7/9(金) ~ 7/12(月) に開催された ICFP-PC 2021 にチーム chirijako で参加しました&lt;br>
+コンテストサイト&lt;br>
+&lt;a href="https://icfpcontest2021.github.io/index.html">https://icfpcontest2021.github.io/index.html&lt;/a>&lt;br>
+リポジトリ&lt;br>
+&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021&lt;/a>&lt;/p>
+&lt;p>ちょこちょこメンバーが変わりつつ、このチームで参加するのは今年で五年目ぐらい&lt;br>
+(去年は諸事情により自分は参加しなかった)&lt;br>
+今年は Rust で参加しました&lt;br>
+自分が知る限り例年 C++, Python で参加していましたが、何故かメンバー全員 Rust 使えるようになっていて凄い&lt;/p>
+&lt;h2 id="結果">結果&lt;/h2>
+&lt;p>ランキングページ凍結時点では 6/150 位ぐらい？&lt;/p>
+&lt;p>TBW&lt;/p>
+&lt;h2 id="やったこと">やったこと&lt;/h2>
+&lt;p>例年ソルバー係をやっていましたが、今年は途中で無力を感じてビジュアライザ係になりました&lt;/p>
+&lt;ul>
+&lt;li>ビジュアライザの実装
+&lt;ul>
+&lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad&lt;/a>&lt;/li>
+&lt;li>改めて README を見るとやたら操作が多い&lt;/li>
+&lt;li>ノリで使ったことが無い &lt;a href="https://github.com/hecrj/coffee">coffee&lt;/a> を使ってみたがかなり良かった&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/omuric/blog/master/resources/_gen/images/poses-pad.png" alt="">
+&lt;img src="https://raw.githubusercontent.com/omuric/blog/master/resources/_gen/images/poses-pad.gif" alt="">&lt;/p>
+&lt;p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった&lt;/p>
+&lt;ul>
+&lt;li>ライブラリ兼 cli
+&lt;ul>
+&lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu&lt;/a>&lt;/li>
+&lt;li>始めソルバーをここで作っていてその残骸が各所で参照されている&lt;/li>
+&lt;li>後半からはよく分からない cli に&lt;/li>
+&lt;li>チームメンバーのイケてるソルバをビジュアライザ上で使うためにここに移植したりした&lt;/li>
+&lt;li>幾何の実装がちょいバグっている&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="ビジュアライザ周りの知見">ビジュアライザ周りの知見&lt;/h2>
+&lt;p>今年は実質ビジュアライザ実装しかやってないので、その辺り&lt;/p>
+&lt;h3 id="ビジュアライザを-web-で実装するかネイティブで実装するか">ビジュアライザを web で実装するか、ネイティブで実装するか&lt;/h3>
+&lt;ul>
+&lt;li>ネイティブアプリ
+&lt;ul>
+&lt;li>環境依存の挙動が比較的出やすい&lt;/li>
+&lt;li>ソルバーをビジュアライザと結合しやすい
+&lt;ul>
+&lt;li>言語が同じなら結合コストがかなり小さくなる&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>入出力はコマンドライン上の指定が可能で楽&lt;/li>
+&lt;li>自由に言語選択できる&lt;/li>
+&lt;li>言語に対する習熟度によっては実行までのコストが大きい
+&lt;ul>
+&lt;li>バイナリを配布できるなら大丈夫&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Web アプリ
+&lt;ul>
+&lt;li>環境依存の挙動が少ない&lt;/li>
+&lt;li>ソルバーとの結合が難しい
+&lt;ul>
+&lt;li>ウェブアセンブリ使えばまあ出来る?&lt;/li>
+&lt;li>少なくともネイティブアプリよりはコストがかかるはず&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>入出力ファイルのインターフェースが (普通に実装すると) 扱いづらい&lt;/li>
+&lt;li>(基本的には) 言語を typescript に強制される&lt;/li>
+&lt;li>どこかにホスティングすれば実行までのコストは無&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>結論&lt;/p>
+&lt;ul>
+&lt;li>ソルバーとの結合が重要そうなら、ソルバー係と言語を合わせてネイティブアプリ
+&lt;ul>
+&lt;li>致命的な環境依存の挙動が出ないことを祈る&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>↑でないなら Web アプリが無難か&lt;/li>
+&lt;/ul>
+&lt;h3 id="ソルバーとの結合">ソルバーとの結合&lt;/h3>
+&lt;ul>
+&lt;li>ソルバーの挙動確認・デバッグがやりやすくなる&lt;/li>
+&lt;li>ビジュアライザとソルバーを結合することで、手動で解く効率が上がる可能性がある&lt;/li>
+&lt;li>できれば実装を始める前にソルバー係とインタフェースの打ち合わせをしたほうが良い&lt;/li>
+&lt;/ul>
+&lt;h3 id="ビジュアライザの実装方針">ビジュアライザの実装方針&lt;/h3>
+&lt;p>大まかに分けるとビジュアライザの目的は以下&lt;/p>
+&lt;ul>
+&lt;li>手動で問題を解く効率を上げる
+&lt;ul>
+&lt;li>操作性&lt;/li>
+&lt;li>視認性&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>ソルバーの挙動を把握する効率を上げる
+&lt;ul>
+&lt;li>視認性&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>結論&lt;/p>
+&lt;ul>
+&lt;li>手動で解くことが有効なら、操作性・視認性に気を使う&lt;/li>
+&lt;li>手動で解くことが有効でない問題は、視認性のみに気を使う&lt;/li>
+&lt;/ul>
+&lt;h3 id="手動で解くことが有効かどうか">手動で解くことが有効かどうか&lt;/h3>
+&lt;ul>
+&lt;li>有効なソルバーの実装が難しい&lt;/li>
+&lt;li>盤面が人間の脳に理解しやすい
+&lt;ul>
+&lt;li>二次元の問題&lt;/li>
+&lt;li>操作順がスコアリングに影響しない問題
+&lt;ul>
+&lt;li>順番を気にするのは人間には難しい&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>手動で解いてくれそうなメンバーが居る
+&lt;ul>
+&lt;li>手動で解く人が居ない場合、手動で解くことは有効でない&lt;/li>
+&lt;li>多ければ多いほど手動で解くことは有効&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>一部の問題のみ↑が当てはまるのはありがちなストーリーなので、問題の把握は大事&lt;/p>
+&lt;h3 id="公式ビジュアライザとの兼ね合い">公式ビジュアライザとの兼ね合い&lt;/h3>
+&lt;ul>
+&lt;li>公式ビジュアライザと役割が被ってないか常に意識する&lt;/li>
+&lt;/ul>
+&lt;h3 id="ビジュアライザの改善">ビジュアライザの改善&lt;/h3>
+&lt;ul>
+&lt;li>実際に使ってるところを見る&lt;/li>
+&lt;li>どんな機能が必要か聞いてみる&lt;/li>
+&lt;li>使われてない場合
+&lt;ul>
+&lt;li>使われてないツールは価値を出しにくいので、どこかで見切りをつける&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="来年に向けてやっとくこと">来年に向けてやっとくこと&lt;/h2>
+&lt;h3 id="ビジュアライザ">ビジュアライザ&lt;/h3>
+&lt;ul>
+&lt;li>三次元の何かのビジュアライザを実装してみる&lt;/li>
+&lt;li>今回の実装から二次元ビジュアライザのテンプレを作る&lt;/li>
+&lt;/ul>
+&lt;h3 id="幾何">幾何&lt;/h3>
+&lt;ul>
+&lt;li>自前実装してバグらせたのは良くなかった&lt;/li>
+&lt;li>Rust のいい感じの幾何ライブラリを探す&lt;/li>
+&lt;/ul></description></item><item><title>Codingame Fall Challenge 2020 参加記</title><link>https://omuric.github.io/posts/codingame-fall-challenge-2020/</link><pubDate>Tue, 24 Nov 2020 00:40:00 +0900</pubDate><guid>https://omuric.github.io/posts/codingame-fall-challenge-2020/</guid><description>&lt;h1 id="codingame-fall-challenge-2020-参加記">Codingame Fall Challenge 2020 参加記&lt;/h1>
 &lt;p>2020年 11/12(木) ~ 11/23(月) に開催された &lt;a href="https://www.codingame.com/contests/fall-challenge-2020">Codingame Fall Challenge 2020&lt;/a> に参加しました&lt;br>
 最終結果は 41/7043 位でした&lt;/p>
 &lt;p>&lt;img src="https://raw.githubusercontent.com/omuric/blog/master/resources/_gen/images/codingame-fall-challenge-2020_result.png" alt="">&lt;/p>
