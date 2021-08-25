@@ -30,7 +30,7 @@
 &lt;li>ライブラリ兼 cli
 &lt;ul>
 &lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu&lt;/a>&lt;/li>
-&lt;li>始めソルバーをここで作っていてその残骸が各所で参照されている&lt;/li>
+&lt;li>始めソルバーをここで作っており、その残骸が共通データモデルとして各所で参照されている&lt;/li>
 &lt;li>後半からはよく分からない cli に&lt;/li>
 &lt;li>チームメンバーのイケてるソルバをビジュアライザ上で使うためにここに移植したりした&lt;/li>
 &lt;li>幾何の実装がちょいバグっている&lt;/li>
@@ -73,7 +73,7 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>結論&lt;/p>
+&lt;p>上記を踏まえて&lt;/p>
 &lt;ul>
 &lt;li>ソルバーとの結合が重要そうなら、ソルバー係と言語を合わせてネイティブアプリ
 &lt;ul>
@@ -103,7 +103,7 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>結論&lt;/p>
+&lt;p>上記を踏まえて&lt;/p>
 &lt;ul>
 &lt;li>手動で解くことが有効なら、操作性・視認性に気を使う&lt;/li>
 &lt;li>手動で解くことが有効でない問題は、視認性のみに気を使う&lt;/li>
