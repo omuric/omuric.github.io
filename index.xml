@@ -112,12 +112,11 @@
 &lt;/ul>
 &lt;p>上記踏まえて&lt;/p>
 &lt;ul>
-&lt;li>ソルバーとの結合が重要そうなら、ソルバー係と言語を合わせてネイティブアプリ
+&lt;li>ソルバーとの結合は結構重要なので、ソルバー係と言語を合わせてネイティブアプリが良さそう？
 &lt;ul>
 &lt;li>致命的な環境依存の挙動が出ないことを祈る&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>↑でないなら Web アプリが無難か&lt;/li>
 &lt;/ul>
 &lt;h2 id="来年に向けてやっとくこと">来年に向けてやっとくこと&lt;/h2>
 &lt;h3 id="ソルバー周り">ソルバー周り&lt;/h3>
@@ -131,8 +130,7 @@
 &lt;/ul>
 &lt;h3 id="幾何">幾何&lt;/h3>
 &lt;ul>
-&lt;li>自前実装してバグらせたのは良くなかった&lt;/li>
-&lt;li>Rust のいい感じの幾何ライブラリを探す&lt;/li>
+&lt;li>自前実装が結構しんどいのでいい感じの幾何ライブラリを探す&lt;/li>
 &lt;/ul></description></item><item><title>Codingame Fall Challenge 2020 参加記</title><link>https://omuric.github.io/posts/codingame-fall-challenge-2020/</link><pubDate>Tue, 24 Nov 2020 00:40:00 +0900</pubDate><guid>https://omuric.github.io/posts/codingame-fall-challenge-2020/</guid><description>&lt;h1 id="codingame-fall-challenge-2020-参加記">Codingame Fall Challenge 2020 参加記&lt;/h1>
 &lt;p>2020年 11/12(木) ~ 11/23(月) に開催された &lt;a href="https://www.codingame.com/contests/fall-challenge-2020">Codingame Fall Challenge 2020&lt;/a> に参加しました&lt;br>
 最終結果は 41/7043 位でした&lt;/p>
