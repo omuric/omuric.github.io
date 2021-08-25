@@ -11,17 +11,17 @@
 &lt;h2 id="結果">結果&lt;/h2>
 &lt;p>6/160 位でした&lt;br>
 例年 30 位くらいなのでかなり健闘できた (嬉しい)&lt;/p>
-&lt;p>&lt;img src="https://omuric.github.io/images/icfpc2021/result.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/result.png" alt="">&lt;/p>
 &lt;h2 id="チームでやったこと">チームでやったこと&lt;/h2>
 &lt;ul>
 &lt;li>Rust で焼きなましソルバーを実装&lt;/li>
 &lt;li>クソつよ EC2 インスタンス (c5.24xlarge) 借りて並列計算&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://omuric.github.io/images/icfpc2021/ec2.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/ec2.png" alt="">&lt;/p>
 &lt;ul>
 &lt;li>TypeScript + React でダッシュボード&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://omuric.github.io/images/icfpc2021/web-dashboard.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/web-dashboard.png" alt="">&lt;/p>
 &lt;ul>
 &lt;li>Rust でビジュアライザを実装
 &lt;ul>
@@ -55,9 +55,9 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://omuric.github.io/images/icfpc2021/poses-pad.png" alt="">&lt;/p>
-&lt;p>&lt;img src="https://omuric.github.io/images/icfpc2021/poses-pad.gif" alt="">&lt;/p>
-&lt;p>&lt;img src="https://omuric.github.io/images/icfpc2021/poses-ope.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-pad.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-pad.gif" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-ope.png" alt="">&lt;/p>
 &lt;p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった&lt;br>
 「実装」 -&amp;gt; 「メンバーが必要な機能をフィードバック」 -&amp;gt; 「実装」 のサイクルが非常に楽しかった&lt;/p>
 &lt;h2 id="ビジュアライザ実装してみてのメモ書き">ビジュアライザ実装してみてのメモ書き&lt;/h2>
@@ -183,7 +183,7 @@
 &lt;/ul></description></item><item><title>Codingame Fall Challenge 2020 参加記</title><link>https://omuric.github.io/posts/codingame-fall-challenge-2020/</link><pubDate>Tue, 24 Nov 2020 00:40:00 +0900</pubDate><guid>https://omuric.github.io/posts/codingame-fall-challenge-2020/</guid><description>&lt;h1 id="codingame-fall-challenge-2020-参加記">Codingame Fall Challenge 2020 参加記&lt;/h1>
 &lt;p>2020年 11/12(木) ~ 11/23(月) に開催された &lt;a href="https://www.codingame.com/contests/fall-challenge-2020">Codingame Fall Challenge 2020&lt;/a> に参加しました&lt;br>
 最終結果は 41/7043 位でした&lt;/p>
-&lt;p>&lt;img src="https://omuric.github.io/images/codingame-fall-challenge-2020/result.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/codingame-fall-challenge-2020/result.png" alt="">&lt;/p>
 &lt;h2 id="やったこと">やったこと&lt;/h2>
 &lt;h3 id="ビームサーチ">ビームサーチ&lt;/h3>
 &lt;ul>
