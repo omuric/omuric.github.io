@@ -32,22 +32,8 @@
 &lt;h2 id="自分がやったこと">自分がやったこと&lt;/h2>
 &lt;p>例年ソルバー係をやっていましたが、今年は途中で無力を感じてビジュアライザ係になりました&lt;/p>
 &lt;ul>
-&lt;li>ライブラリ兼 CLI ツール
+&lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad&lt;/a>
 &lt;ul>
-&lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu&lt;/a>&lt;/li>
-&lt;li>途中までここでソルバーを作っていたが投げ捨てた
-&lt;ul>
-&lt;li>残骸が共通データモデルとして各所で参照されている&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>後半からは謎の cli に&lt;/li>
-&lt;li>チームメンバーのイケてるソルバをビジュアライザ上で使うためにここに移植したりした&lt;/li>
-&lt;li>幾何の実装がちょいバグっている&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>ビジュアライザの実装
-&lt;ul>
-&lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad&lt;/a>&lt;/li>
 &lt;li>改めて README を見るとやたら操作が多い&lt;/li>
 &lt;li>ノリで使ったことが無い &lt;a href="https://github.com/hecrj/coffee">coffee&lt;/a> を使ってみたがかなり良かった&lt;/li>
 &lt;li>ビジュアライザ上で焼きなましを実行できるようにしてみたが、かなり良かった&lt;/li>
@@ -59,34 +45,14 @@
 &lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-pad.gif" alt="">&lt;/p>
 &lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-ope.png" alt="">&lt;/p>
 &lt;p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった&lt;br>
-「実装」 -&amp;gt; 「メンバーが必要な機能をフィードバック」 -&amp;gt; 「実装」 のサイクルが非常に楽しかった&lt;/p>
+「実装」 -&amp;gt; 「メンバーからのフィードバック」 -&amp;gt; 「実装」 のサイクルがかなり楽しかった&lt;/p>
 &lt;h2 id="ビジュアライザ実装してみてのメモ書き">ビジュアライザ実装してみてのメモ書き&lt;/h2>
 &lt;p>今年は実質ビジュアライザ実装しかやってないのでその辺り&lt;/p>
 &lt;h3 id="ソルバーとの結合">ソルバーとの結合&lt;/h3>
 &lt;ul>
-&lt;li>ソルバーの挙動確認やデバッグの効率が劇的に上がる&lt;/li>
+&lt;li>ソルバーの挙動確認やデバッグの効率が上がる&lt;/li>
 &lt;li>ビジュアライザとソルバーを結合することで、手動解も作りやすくなる&lt;/li>
 &lt;li>できれば実装を始める前にソルバー係とインタフェースの打ち合わせをしたほうが良い&lt;/li>
-&lt;/ul>
-&lt;h3 id="ビジュアライザの実装方針">ビジュアライザの実装方針&lt;/h3>
-&lt;p>大まかに分けるとビジュアライザの目的は以下&lt;/p>
-&lt;ul>
-&lt;li>手動で問題を解く効率を上げる
-&lt;ul>
-&lt;li>操作性&lt;/li>
-&lt;li>視認性&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>ソルバーの挙動を把握する効率を上げる
-&lt;ul>
-&lt;li>視認性&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>上記を踏まえて&lt;/p>
-&lt;ul>
-&lt;li>手動で解くことが有効なら、操作性と視認性どちらもに気を使う&lt;/li>
-&lt;li>手動で解くことが有効でない問題は、視認性のみに気を使う&lt;/li>
 &lt;/ul>
 &lt;h3 id="手動で解くことが有効かどうか">手動で解くことが有効かどうか&lt;/h3>
 &lt;ul>
@@ -151,20 +117,6 @@
 &lt;/ul>
 &lt;/li>
 &lt;li>↑でないなら Web アプリが無難か&lt;/li>
-&lt;/ul>
-&lt;h3 id="公式ビジュアライザとの兼ね合い">公式ビジュアライザとの兼ね合い&lt;/h3>
-&lt;ul>
-&lt;li>公式ビジュアライザと役割が被ってないか常に意識する&lt;/li>
-&lt;/ul>
-&lt;h3 id="ビジュアライザの改善">ビジュアライザの改善&lt;/h3>
-&lt;ul>
-&lt;li>実際に使ってるところを見る&lt;/li>
-&lt;li>どんな機能が必要か聞いてみる&lt;/li>
-&lt;li>使われてない場合
-&lt;ul>
-&lt;li>使われてないツールは価値を出しにくいので、どこかで見切りをつける&lt;/li>
-&lt;/ul>
-&lt;/li>
 &lt;/ul>
 &lt;h2 id="来年に向けてやっとくこと">来年に向けてやっとくこと&lt;/h2>
 &lt;h3 id="ソルバー周り">ソルバー周り&lt;/h3>

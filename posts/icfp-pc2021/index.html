@@ -62,22 +62,8 @@
 <h2 id=自分がやったこと>自分がやったこと</h2>
 <p>例年ソルバー係をやっていましたが、今年は途中で無力を感じてビジュアライザ係になりました</p>
 <ul>
-<li>ライブラリ兼 CLI ツール
+<li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad</a>
 <ul>
-<li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu</a></li>
-<li>途中までここでソルバーを作っていたが投げ捨てた
-<ul>
-<li>残骸が共通データモデルとして各所で参照されている</li>
-</ul>
-</li>
-<li>後半からは謎の cli に</li>
-<li>チームメンバーのイケてるソルバをビジュアライザ上で使うためにここに移植したりした</li>
-<li>幾何の実装がちょいバグっている</li>
-</ul>
-</li>
-<li>ビジュアライザの実装
-<ul>
-<li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad</a></li>
 <li>改めて README を見るとやたら操作が多い</li>
 <li>ノリで使ったことが無い <a href=https://github.com/hecrj/coffee>coffee</a> を使ってみたがかなり良かった</li>
 <li>ビジュアライザ上で焼きなましを実行できるようにしてみたが、かなり良かった</li>
@@ -89,34 +75,14 @@
 <p><img src=https://omuric.github.io/icfpc2021/poses-pad.gif alt></p>
 <p><img src=https://omuric.github.io/icfpc2021/poses-ope.png alt></p>
 <p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった<br>
-「実装」 -> 「メンバーが必要な機能をフィードバック」 -> 「実装」 のサイクルが非常に楽しかった</p>
+「実装」 -> 「メンバーからのフィードバック」 -> 「実装」 のサイクルがかなり楽しかった</p>
 <h2 id=ビジュアライザ実装してみてのメモ書き>ビジュアライザ実装してみてのメモ書き</h2>
 <p>今年は実質ビジュアライザ実装しかやってないのでその辺り</p>
 <h3 id=ソルバーとの結合>ソルバーとの結合</h3>
 <ul>
-<li>ソルバーの挙動確認やデバッグの効率が劇的に上がる</li>
+<li>ソルバーの挙動確認やデバッグの効率が上がる</li>
 <li>ビジュアライザとソルバーを結合することで、手動解も作りやすくなる</li>
 <li>できれば実装を始める前にソルバー係とインタフェースの打ち合わせをしたほうが良い</li>
-</ul>
-<h3 id=ビジュアライザの実装方針>ビジュアライザの実装方針</h3>
-<p>大まかに分けるとビジュアライザの目的は以下</p>
-<ul>
-<li>手動で問題を解く効率を上げる
-<ul>
-<li>操作性</li>
-<li>視認性</li>
-</ul>
-</li>
-<li>ソルバーの挙動を把握する効率を上げる
-<ul>
-<li>視認性</li>
-</ul>
-</li>
-</ul>
-<p>上記を踏まえて</p>
-<ul>
-<li>手動で解くことが有効なら、操作性と視認性どちらもに気を使う</li>
-<li>手動で解くことが有効でない問題は、視認性のみに気を使う</li>
 </ul>
 <h3 id=手動で解くことが有効かどうか>手動で解くことが有効かどうか</h3>
 <ul>
@@ -182,20 +148,6 @@
 </li>
 <li>↑でないなら Web アプリが無難か</li>
 </ul>
-<h3 id=公式ビジュアライザとの兼ね合い>公式ビジュアライザとの兼ね合い</h3>
-<ul>
-<li>公式ビジュアライザと役割が被ってないか常に意識する</li>
-</ul>
-<h3 id=ビジュアライザの改善>ビジュアライザの改善</h3>
-<ul>
-<li>実際に使ってるところを見る</li>
-<li>どんな機能が必要か聞いてみる</li>
-<li>使われてない場合
-<ul>
-<li>使われてないツールは価値を出しにくいので、どこかで見切りをつける</li>
-</ul>
-</li>
-</ul>
 <h2 id=来年に向けてやっとくこと>来年に向けてやっとくこと</h2>
 <h3 id=ソルバー周り>ソルバー周り</h3>
 <ul>
@@ -224,7 +176,7 @@
 </div>
 <div class="text-sm text-gray-500 leading-tight a-gray">
 <br>
-Built with Hugo and theme <a href=https://github.com/heyeshuang/hugo-theme-tokiwa>Tokiwa</a>. 157 words in this page.
+Built with Hugo and theme <a href=https://github.com/heyeshuang/hugo-theme-tokiwa>Tokiwa</a>. 128 words in this page.
 </div>
 </div>
 </div>
