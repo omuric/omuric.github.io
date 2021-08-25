@@ -39,37 +39,58 @@
 今年は Rust で参加しました<br>
 自分が知る限り例年 C++, Python で参加していましたが、何故かメンバー全員 Rust 使えるようになっていて凄い</p>
 <h2 id=結果>結果</h2>
-<p>ランキングページ凍結時点では 6/150 位ぐらい？<br>
-例年 30 位くらいなのでかなり健闘</p>
-<p>TBW</p>
-<h2 id=やったこと>やったこと</h2>
+<p>6/160 位でした<br>
+例年 30 位くらいなのでかなり健闘できた (嬉しい)</p>
+<p><img src=https://omuric.github.io/images/icfpc2021/result.png alt></p>
+<h2 id=チームでやったこと>チームでやったこと</h2>
+<ul>
+<li>Rust で焼きなましソルバーを実装</li>
+<li>クソつよ EC2 インスタンス (c5.24xlarge) 借りて並列計算</li>
+</ul>
+<p><img src=https://omuric.github.io/images/icfpc2021/ec2.png alt></p>
+<ul>
+<li>TypeScript + React でダッシュボード</li>
+</ul>
+<p><img src=https://omuric.github.io/images/icfpc2021/web-dashboard.png alt></p>
+<ul>
+<li>Rust でビジュアライザを実装
+<ul>
+<li>ソルバーで解くのが厳しい問題はこれで手動解を作った</li>
+</ul>
+</li>
+</ul>
+<h2 id=自分がやったこと>自分がやったこと</h2>
 <p>例年ソルバー係をやっていましたが、今年は途中で無力を感じてビジュアライザ係になりました</p>
 <ul>
+<li>ライブラリ兼 CLI ツール
+<ul>
+<li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu</a></li>
+<li>途中までここでソルバーを作っていたが投げ捨てた
+<ul>
+<li>残骸が共通データモデルとして各所で参照されている</li>
+</ul>
+</li>
+<li>後半からは謎の cli に</li>
+<li>チームメンバーのイケてるソルバをビジュアライザ上で使うためにここに移植したりした</li>
+<li>幾何の実装がちょいバグっている</li>
+</ul>
+</li>
 <li>ビジュアライザの実装
 <ul>
 <li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad</a></li>
 <li>改めて README を見るとやたら操作が多い</li>
 <li>ノリで使ったことが無い <a href=https://github.com/hecrj/coffee>coffee</a> を使ってみたがかなり良かった</li>
+<li>ビジュアライザ上で焼きなましを実行できるようにしてみたが、かなり良かった</li>
 <li>Rust 全然バグらない</li>
 </ul>
 </li>
 </ul>
-<p><img src=https://omuric.github.io/images/poses-pad.png alt></p>
-<p><img src=https://omuric.github.io/images/poses-pad.gif alt></p>
-<p><img src=https://omuric.github.io/images/poses-ope.png alt></p>
-<p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった</p>
-<ul>
-<li>ライブラリ兼 cli
-<ul>
-<li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/omu</a></li>
-<li>始めソルバーをここで作っており、その残骸が共通データモデルとして各所で参照されている</li>
-<li>後半からはよく分からない cli に</li>
-<li>チームメンバーのイケてるソルバをビジュアライザ上で使うためにここに移植したりした</li>
-<li>幾何の実装がちょいバグっている</li>
-</ul>
-</li>
-</ul>
-<h2 id=ビジュアライザ実装してみての知見メモ書き>ビジュアライザ実装してみての知見・メモ書き</h2>
+<p><img src=https://omuric.github.io/images/icfpc2021/poses-pad.png alt></p>
+<p><img src=https://omuric.github.io/images/icfpc2021/poses-pad.gif alt></p>
+<p><img src=https://omuric.github.io/images/icfpc2021/poses-ope.png alt></p>
+<p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった<br>
+「実装」 -> 「メンバーが必要な機能をフィードバック」 -> 「実装」 のサイクルが非常に楽しかった</p>
+<h2 id=ビジュアライザ実装してみてのメモ書き>ビジュアライザ実装してみてのメモ書き</h2>
 <p>今年は実質ビジュアライザ実装しかやってないのでその辺り</p>
 <h3 id=ソルバーとの結合>ソルバーとの結合</h3>
 <ul>
@@ -176,7 +197,11 @@
 </li>
 </ul>
 <h2 id=来年に向けてやっとくこと>来年に向けてやっとくこと</h2>
-<h3 id=ビジュアライザ>ビジュアライザ</h3>
+<h3 id=ソルバー周り>ソルバー周り</h3>
+<ul>
+<li>焼きなましを AHC の過去問とかで素振りする</li>
+</ul>
+<h3 id=ビジュアライザ周り>ビジュアライザ周り</h3>
 <ul>
 <li>三次元の何かのビジュアライザを実装してみる</li>
 <li>今回の実装から二次元ビジュアライザのテンプレを作る</li>
@@ -199,7 +224,7 @@
 </div>
 <div class="text-sm text-gray-500 leading-tight a-gray">
 <br>
-Built with Hugo and theme <a href=https://github.com/heyeshuang/hugo-theme-tokiwa>Tokiwa</a>. 130 words in this page.
+Built with Hugo and theme <a href=https://github.com/heyeshuang/hugo-theme-tokiwa>Tokiwa</a>. 157 words in this page.
 </div>
 </div>
 </div>
