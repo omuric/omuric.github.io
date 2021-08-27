@@ -13,47 +13,56 @@
 いつもは 30 位くらいなのでかなり健闘できた (嬉しい)&lt;/p>
 &lt;p>&lt;img src="https://omuric.github.io/icfpc2021/result.png" alt="">&lt;/p>
 &lt;h2 id="チームでやったこと">チームでやったこと&lt;/h2>
+&lt;h3 id="焼きなましソルバ">焼きなましソルバ&lt;/h3>
 &lt;ul>
-&lt;li>Rust で焼きなましソルバーを実装&lt;/li>
-&lt;li>クソつよ EC2 インスタンス (c5.24xlarge) 借りて並列計算&lt;/li>
+&lt;li>Rust でチームメイトが実装&lt;/li>
+&lt;li>クソつよ EC2 インスタンス (c5.24xlarge) 借りて並列でソルバーを回した結果、ほとんどの問題をいい感じに解いた&lt;/li>
 &lt;/ul>
 &lt;p>&lt;img src="https://omuric.github.io/icfpc2021/ec2.png" alt="">&lt;/p>
+&lt;h3 id="web-ダッシュボード">Web ダッシュボード&lt;/h3>
 &lt;ul>
-&lt;li>TypeScript + React でダッシュボード&lt;/li>
+&lt;li>TypeScript + React でチームメイトが実装&lt;/li>
+&lt;li>これまで出した解の一覧が問題ごとにランキング形式で見れる&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/web-dashboard.jpeg" alt="">&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/web-dashboard-1.jpeg" alt="">&lt;/p>
 &lt;ul>
-&lt;li>Rust でビジュアライザを実装
-&lt;ul>
-&lt;li>ソルバーで解くのが厳しい問題はこれで手動解を作った&lt;/li>
+&lt;li>簡易的な操作機構がついており、後述するビジュアライザが出来るまでは、コレで手動で解いていた&lt;/li>
 &lt;/ul>
-&lt;/li>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2021/web-dashboard-2.jpeg" alt="">&lt;/p>
+&lt;h3 id="ビジュアライザ">ビジュアライザ&lt;/h3>
+&lt;ul>
+&lt;li>Rust で自分が実装&lt;/li>
+&lt;li>詳細は後述&lt;/li>
 &lt;/ul>
 &lt;h2 id="自分がやったこと">自分がやったこと&lt;/h2>
 &lt;p>例年ソルバー係をやっていましたが、今年は途中で無力を感じてビジュアライザ係になりました&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad&lt;/a>
+&lt;li>ディレクトリ
 &lt;ul>
-&lt;li>改めて README を見るとやたら操作が多い&lt;/li>
-&lt;li>ノリで使ったことが無い &lt;a href="https://github.com/hecrj/coffee">coffee&lt;/a> を使ってみたがかなり良かった&lt;/li>
-&lt;li>ビジュアライザ上で焼きなましを実行できるようにしてみたがかなり良かった&lt;/li>
-&lt;li>Rust 全然バグらない&lt;/li>
+&lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>使ったことが無いゲームライブラリ使おうと思い &lt;a href="https://github.com/hecrj/coffee">coffee&lt;/a> をノリで使ってみたがかなり良かった&lt;/li>
+&lt;li>ビジュアライザ上で焼きなましを実行できるようにしてみた
+&lt;ul>
+&lt;li>「人間が大まかな形を作る」 -&amp;gt; 「焼きなましで微調整」がかなり体験として良かった&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
 &lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-pad.png" alt="">&lt;/p>
 &lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-pad.gif" alt="">&lt;/p>
 &lt;p>&lt;img src="https://omuric.github.io/icfpc2021/poses-ope.png" alt="">&lt;/p>
-&lt;p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった&lt;br>
-「実装」 -&amp;gt; 「メンバーからのフィードバック」 -&amp;gt; 「実装」 のサイクルがかなり楽しかった&lt;/p>
-&lt;h2 id="ビジュアライザ実装してみての知見">ビジュアライザ実装してみての知見&lt;/h2>
-&lt;h3 id="ソルバーとの結合">ソルバーとの結合&lt;/h3>
+&lt;p>チームメンバーの意見を参考にしつつ色々追加していった結果、↑の通りかなり多機能になった&lt;br>
+「実装」 -&amp;gt; 「メンバーからのフィードバック」 -&amp;gt; 「実装」 のサイクルができていて、開発楽し〜〜となっていた&lt;/p>
+&lt;h2 id="ビジュアライザについて振り返ってみて感じたことなど">ビジュアライザについて振り返ってみて感じたことなど&lt;/h2>
+&lt;h3 id="ソルバーとの結合は重要">ソルバーとの結合は重要&lt;/h3>
 &lt;ul>
 &lt;li>ソルバーの挙動確認やデバッグの効率が上がる&lt;/li>
 &lt;li>ビジュアライザとソルバーを結合することで、手動解も作りやすくなる&lt;/li>
 &lt;li>できれば実装を始める前にソルバー係とインタフェースの打ち合わせをしたほうが良い&lt;/li>
 &lt;/ul>
-&lt;h3 id="手動で解くのが有効かどうか">手動で解くのが有効かどうか&lt;/h3>
+&lt;h3 id="手動で解くのが有効かどうかで実装方針が変わる">手動で解くのが有効かどうかで実装方針が変わる&lt;/h3>
+&lt;p>手動で解くのが有効化どうかは、以下の点が重要&lt;/p>
 &lt;ul>
 &lt;li>ソルバーの実装が難しい&lt;/li>
 &lt;li>盤面が人間の脳に理解しやすい
@@ -73,9 +82,10 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>一部の問題のみ↑が当てはまるのはありがちなストーリーなので、問題の把握は大事&lt;br>
-手動が有効でないならソルバーの挙動確認がビジュアライザの主目的になる&lt;/p>
-&lt;h3 id="ビジュアライザを-web-で実装するかネイティブで実装するか">ビジュアライザを web で実装するか、ネイティブで実装するか&lt;/h3>
+&lt;p>手動が有効でないならソルバーの挙動確認がビジュアライザの主目的になるので、実装方針に影響する&lt;br>
+一部の問題のみ↑が当てはまるのはありがちなストーリーなので、問題の把握は大事&lt;/p>
+&lt;h3 id="web-で実装するかネイティブで実装するか">web で実装するか、ネイティブで実装するか&lt;/h3>
+&lt;p>結構悩みどころで、比較してみると&lt;/p>
 &lt;ul>
 &lt;li>ネイティブアプリ
 &lt;ul>
@@ -109,17 +119,12 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>上記踏まえて&lt;/p>
-&lt;ul>
-&lt;li>ソルバーとの結合は結構重要なので、ソルバー係と言語を合わせてネイティブアプリが良さそう？
-&lt;ul>
-&lt;li>致命的な環境依存の挙動が出ないことを祈る&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
+&lt;p>上記踏まえて、ソルバーとの結合が結構重要なので、&lt;br>
+ソルバー係と言語を合わせてネイティブアプリが良さそうかもと思った&lt;/p>
 &lt;h2 id="来年に向けてやっとくこと">来年に向けてやっとくこと&lt;/h2>
 &lt;h3 id="ソルバー周り">ソルバー周り&lt;/h3>
 &lt;ul>
+&lt;li>いい感じのソルバーを実装できなかったのは反省&lt;/li>
 &lt;li>焼きなましを AHC の過去問とかで素振りする&lt;/li>
 &lt;/ul>
 &lt;h3 id="ビジュアライザ周り">ビジュアライザ周り&lt;/h3>

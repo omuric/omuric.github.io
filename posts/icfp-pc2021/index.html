@@ -43,47 +43,56 @@
 いつもは 30 位くらいなのでかなり健闘できた (嬉しい)</p>
 <p><img src=https://omuric.github.io/icfpc2021/result.png alt></p>
 <h2 id=チームでやったこと>チームでやったこと</h2>
+<h3 id=焼きなましソルバ>焼きなましソルバ</h3>
 <ul>
-<li>Rust で焼きなましソルバーを実装</li>
-<li>クソつよ EC2 インスタンス (c5.24xlarge) 借りて並列計算</li>
+<li>Rust でチームメイトが実装</li>
+<li>クソつよ EC2 インスタンス (c5.24xlarge) 借りて並列でソルバーを回した結果、ほとんどの問題をいい感じに解いた</li>
 </ul>
 <p><img src=https://omuric.github.io/icfpc2021/ec2.png alt></p>
+<h3 id=web-ダッシュボード>Web ダッシュボード</h3>
 <ul>
-<li>TypeScript + React でダッシュボード</li>
+<li>TypeScript + React でチームメイトが実装</li>
+<li>これまで出した解の一覧が問題ごとにランキング形式で見れる</li>
 </ul>
-<p><img src=https://omuric.github.io/icfpc2021/web-dashboard.jpeg alt></p>
+<p><img src=https://omuric.github.io/icfpc2021/web-dashboard-1.jpeg alt></p>
 <ul>
-<li>Rust でビジュアライザを実装
-<ul>
-<li>ソルバーで解くのが厳しい問題はこれで手動解を作った</li>
+<li>簡易的な操作機構がついており、後述するビジュアライザが出来るまでは、コレで手動で解いていた</li>
 </ul>
-</li>
+<p><img src=https://omuric.github.io/icfpc2021/web-dashboard-2.jpeg alt></p>
+<h3 id=ビジュアライザ>ビジュアライザ</h3>
+<ul>
+<li>Rust で自分が実装</li>
+<li>詳細は後述</li>
 </ul>
 <h2 id=自分がやったこと>自分がやったこと</h2>
 <p>例年ソルバー係をやっていましたが、今年は途中で無力を感じてビジュアライザ係になりました</p>
 <ul>
-<li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad</a>
+<li>ディレクトリ
 <ul>
-<li>改めて README を見るとやたら操作が多い</li>
-<li>ノリで使ったことが無い <a href=https://github.com/hecrj/coffee>coffee</a> を使ってみたがかなり良かった</li>
-<li>ビジュアライザ上で焼きなましを実行できるようにしてみたがかなり良かった</li>
-<li>Rust 全然バグらない</li>
+<li><a href=https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad>https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad</a></li>
+</ul>
+</li>
+<li>使ったことが無いゲームライブラリ使おうと思い <a href=https://github.com/hecrj/coffee>coffee</a> をノリで使ってみたがかなり良かった</li>
+<li>ビジュアライザ上で焼きなましを実行できるようにしてみた
+<ul>
+<li>「人間が大まかな形を作る」 -> 「焼きなましで微調整」がかなり体験として良かった</li>
 </ul>
 </li>
 </ul>
 <p><img src=https://omuric.github.io/icfpc2021/poses-pad.png alt></p>
 <p><img src=https://omuric.github.io/icfpc2021/poses-pad.gif alt></p>
 <p><img src=https://omuric.github.io/icfpc2021/poses-ope.png alt></p>
-<p>チームメンバーの意見を参考にしつつ、色々追加していった結果かなり多機能になった<br>
-「実装」 -> 「メンバーからのフィードバック」 -> 「実装」 のサイクルがかなり楽しかった</p>
-<h2 id=ビジュアライザ実装してみての知見>ビジュアライザ実装してみての知見</h2>
-<h3 id=ソルバーとの結合>ソルバーとの結合</h3>
+<p>チームメンバーの意見を参考にしつつ色々追加していった結果、↑の通りかなり多機能になった<br>
+「実装」 -> 「メンバーからのフィードバック」 -> 「実装」 のサイクルができていて、開発楽し〜〜となっていた</p>
+<h2 id=ビジュアライザについて振り返ってみて感じたことなど>ビジュアライザについて振り返ってみて感じたことなど</h2>
+<h3 id=ソルバーとの結合は重要>ソルバーとの結合は重要</h3>
 <ul>
 <li>ソルバーの挙動確認やデバッグの効率が上がる</li>
 <li>ビジュアライザとソルバーを結合することで、手動解も作りやすくなる</li>
 <li>できれば実装を始める前にソルバー係とインタフェースの打ち合わせをしたほうが良い</li>
 </ul>
-<h3 id=手動で解くのが有効かどうか>手動で解くのが有効かどうか</h3>
+<h3 id=手動で解くのが有効かどうかで実装方針が変わる>手動で解くのが有効かどうかで実装方針が変わる</h3>
+<p>手動で解くのが有効化どうかは、以下の点が重要</p>
 <ul>
 <li>ソルバーの実装が難しい</li>
 <li>盤面が人間の脳に理解しやすい
@@ -103,9 +112,10 @@
 </ul>
 </li>
 </ul>
-<p>一部の問題のみ↑が当てはまるのはありがちなストーリーなので、問題の把握は大事<br>
-手動が有効でないならソルバーの挙動確認がビジュアライザの主目的になる</p>
-<h3 id=ビジュアライザを-web-で実装するかネイティブで実装するか>ビジュアライザを web で実装するか、ネイティブで実装するか</h3>
+<p>手動が有効でないならソルバーの挙動確認がビジュアライザの主目的になるので、実装方針に影響する<br>
+一部の問題のみ↑が当てはまるのはありがちなストーリーなので、問題の把握は大事</p>
+<h3 id=web-で実装するかネイティブで実装するか>web で実装するか、ネイティブで実装するか</h3>
+<p>結構悩みどころで、比較してみると</p>
 <ul>
 <li>ネイティブアプリ
 <ul>
@@ -139,17 +149,12 @@
 </ul>
 </li>
 </ul>
-<p>上記踏まえて</p>
-<ul>
-<li>ソルバーとの結合は結構重要なので、ソルバー係と言語を合わせてネイティブアプリが良さそう？
-<ul>
-<li>致命的な環境依存の挙動が出ないことを祈る</li>
-</ul>
-</li>
-</ul>
+<p>上記踏まえて、ソルバーとの結合が結構重要なので、<br>
+ソルバー係と言語を合わせてネイティブアプリが良さそうかもと思った</p>
 <h2 id=来年に向けてやっとくこと>来年に向けてやっとくこと</h2>
 <h3 id=ソルバー周り>ソルバー周り</h3>
 <ul>
+<li>いい感じのソルバーを実装できなかったのは反省</li>
 <li>焼きなましを AHC の過去問とかで素振りする</li>
 </ul>
 <h3 id=ビジュアライザ周り>ビジュアライザ周り</h3>
@@ -174,7 +179,7 @@
 </div>
 <div class="text-sm text-gray-500 leading-tight a-gray">
 <br>
-Built with Hugo and theme <a href=https://github.com/heyeshuang/hugo-theme-tokiwa>Tokiwa</a>. 123 words in this page.
+Built with Hugo and theme <a href=https://github.com/heyeshuang/hugo-theme-tokiwa>Tokiwa</a>. 129 words in this page.
 </div>
 </div>
 </div>
