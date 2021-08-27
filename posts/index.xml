@@ -37,11 +37,7 @@
 &lt;h2 id="自分がやったこと">自分がやったこと&lt;/h2>
 &lt;p>例年ソルバー係をやっていましたが、今年は途中で無力を感じてビジュアライザ係になりました&lt;/p>
 &lt;ul>
-&lt;li>ディレクトリ
-&lt;ul>
 &lt;li>&lt;a href="https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad">https://gitlab.com/icfp-pc2021_e-seikatsu/icfp-pc2021/-/tree/main/pad&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;/li>
 &lt;li>使ったことが無いゲームライブラリ使おうと思い &lt;a href="https://github.com/hecrj/coffee">coffee&lt;/a> をノリで使ってみたがかなり良かった&lt;/li>
 &lt;li>ビジュアライザ上で焼きなましを実行できるようにしてみた
 &lt;ul>
