@@ -1,4 +1,127 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on o</title><link>https://omuric.github.io/posts/</link><description>Recent content in Posts on o</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 24 Jul 2021 20:55:00 +0900</lastBuildDate><atom:link href="https://omuric.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>ICFP-PC 2021 参加記</title><link>https://omuric.github.io/posts/icfp-pc2021/</link><pubDate>Sat, 24 Jul 2021 20:55:00 +0900</pubDate><guid>https://omuric.github.io/posts/icfp-pc2021/</guid><description>&lt;h1 id="icfp-pc-2021-参加記">ICFP-PC 2021 参加記&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on o</title><link>https://omuric.github.io/posts/</link><description>Recent content in Posts on o</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 24 Jul 2022 17:00:00 +0900</lastBuildDate><atom:link href="https://omuric.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>ISUCON 12 予選 参加記</title><link>https://omuric.github.io/posts/isucon12-qualify/</link><pubDate>Sun, 24 Jul 2022 17:00:00 +0900</pubDate><guid>https://omuric.github.io/posts/isucon12-qualify/</guid><description>&lt;h1 id="isucon-12-予選-参加記">ISUCON 12 予選 参加記&lt;/h1>
+&lt;p>2022年 7月23日 (土) に開催された ISUCON 12 の予選にチームO (dice801, daiju, omu) で Rust で参加しました&lt;br>
+自分達の最終結果は 25598 点で、20位で予選突破しました。&lt;br>
+(&lt;a href="https://isucon.net/archives/56838276.html">最終結果一覧&lt;/a>)&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/isucon12-qualify/benchmark.png" alt="">&lt;/p>
+&lt;h2 id="事前準備">事前準備&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://omuric.github.io/posts/isucon10-qualify/">ISUCON 10&lt;/a> や ISUCON 11 で使ったツール類を準備
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/sagiegurari/cargo-make">cargo-make&lt;/a>
+&lt;ul>
+&lt;li>各操作を定義してデプロイや kataribe, pt-query-digest の実行など、コマンド一発で諸々できるようにしていた&lt;/li>
+&lt;li>↓の感じで各操作の通知が discord に来る感じにもしていた&lt;/li>
+&lt;li>&lt;img src="https://omuric.github.io/isucon12-qualify/notify.jpeg" alt="">&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="isuconf">https://github.com/omuric/isuconf&lt;/a>
+&lt;ul>
+&lt;li>設定ファイルの管理を行うために自前で用意した CLI ツール&lt;/li>
+&lt;li>各インスタンスの設定ファイルの収集・配布を簡単に出来るやつ&lt;/li>
+&lt;li>去年の予選時にこしらえたもので、今年も幾つか機能追加をした (push, pull 操作の並列化や ssh-config 生成のサポートなど)&lt;/li>
+&lt;li>我ながらそこそこ便利で、去年のチームメンバが別のチームでも布教してくれていて嬉しかったです&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>[https://github.com/launchbadge/sqlx] での典型的な DB 操作の素振り
+&lt;ul>
+&lt;li>普段使わないので本番でハマりがちという反省から&lt;/li>
+&lt;li>in 句による select や bulk insert などの典型と思われるものを練習した&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>[https://github.com/hinohi/rust-opentelemetry-auto-span]
+&lt;ul>
+&lt;li>チームメンバの daiju さんが作った sqlx, reqwest の opentelemetry スパン挿入を簡単にするやつ&lt;/li>
+&lt;li>関数にアノテーションをつけるだけでボトルネックが見えるようになり最高でした&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="チームでやったこと">チームでやったこと&lt;/h2>
+&lt;ul>
+&lt;li>N+1 クエリの解消&lt;/li>
+&lt;li>sqlite から mysql への移行&lt;/li>
+&lt;li>アプリケーションサーバと DB サーバの分離&lt;/li>
+&lt;li>テーブルの圧縮
+&lt;ul>
+&lt;li>visit_history&lt;/li>
+&lt;li>player_score&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>TBW&lt;/p>
+&lt;h2 id="当日自分がやったこと">当日自分がやったこと&lt;/h2>
+&lt;ul>
+&lt;li>N+1 クエリの解消
+&lt;ul>
+&lt;li>コミットログ見ると4つぐらい直したみたいです
+&lt;ul>
+&lt;li>competition_ranking_handler の N+1 を修正&lt;/li>
+&lt;li>player_handler の N+1 を解消&lt;/li>
+&lt;li>player_score を bulk insert&lt;/li>
+&lt;li>competition_score_handler の N+1 を修正&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>player_score 圧縮のアプリ側の対応
+&lt;ul>
+&lt;li>row_num が一番大きいものだけを残せばいいのでそうする&lt;/li>
+&lt;li>初期データの修正は daiju さんが sqlite -&amp;gt; mysql への切替時に合わせてやってくれていました&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>sqlite -&amp;gt; mysql への切り替えのアプリ側の対応
+&lt;ul>
+&lt;li>コード中の sqlite への接続箇所を mysql に切り替える対応&lt;/li>
+&lt;li>データ構造の設計や切り替えは daiju さんが全てやってくれていました&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>dispense_id の生成処理修正
+&lt;ul>
+&lt;li>アプリ側で UUID を生成する形に変更&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>pem ファイルをプログラム起動時に読み込む
+&lt;ul>
+&lt;li>リクエスト毎にファイル読み込みをしていたので修正&lt;/li>
+&lt;li>コードリーディング時にパッと目についたので直したけど余り意味なかったかも&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="良かったこと">良かったこと&lt;/h2>
+&lt;ul>
+&lt;li>Rust での参加
+&lt;ul>
+&lt;li>Rust で出るのは三回目ですが、ORM 周り (というか sqlx) ぐらいでしかバグは出ず改めて良い言語だなという感想&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>ツール類による効率化
+&lt;ul>
+&lt;li>ツールによる自動化で主要な操作はコマンド一発で対応できていて体験が良かった&lt;/li>
+&lt;li>本質的な改善活動に集中出来た&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="反省点">反省点&lt;/h2>
+&lt;ul>
+&lt;li>アプリサーバの分離が間に合わなかった
+&lt;ul>
+&lt;li>最終的な構成はアプリサーバ1台 DBサーバ1台で、1台サーバを余らせている状態だった&lt;/li>
+&lt;li>アプリの CPU がきつそうだったので、アプリサーバを2台にしたかったが、flock の引き剥がしが間に合わず対応できなかった&lt;/li>
+&lt;li>複数のアプリの状態管理に対する素振りが足りていなかったかなという反省&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>方針決めにあまり貢献できなかったこと
+&lt;ul>
+&lt;li>大きな変更 (sqlite の mysql への切り替え) の方針については主に daiju さん, dice801 さんが会話して方針を決めていた&lt;/li>
+&lt;li>自分は決まった方針に対して必要な一部タスクを実施する人になっており、方針決めに頭を使えなかったのは反省&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="感想">感想&lt;/h2>
+&lt;p>今年で ISUCON に参加するのは 5年目ですが、ようやく初めて予選突破できました。&lt;br>
+優秀なチームメンバと良いチームワークで問題に取り組めたのが良かったのかなと思います。&lt;br>
+本戦でもチームに貢献して良い成績を取れるよう頑張りたいです。&lt;/p></description></item><item><title>ICFP-PC 2021 参加記</title><link>https://omuric.github.io/posts/icfp-pc2021/</link><pubDate>Sat, 24 Jul 2021 20:55:00 +0900</pubDate><guid>https://omuric.github.io/posts/icfp-pc2021/</guid><description>&lt;h1 id="icfp-pc-2021-参加記">ICFP-PC 2021 参加記&lt;/h1>
 &lt;p>2021年 7/9(金) ~ 7/12(月) に開催された ICFP-PC 2021 にチーム chirijako で参加しました&lt;br>
 コンテストサイト&lt;br>
 &lt;a href="https://icfpcontest2021.github.io/index.html">https://icfpcontest2021.github.io/index.html&lt;/a>&lt;br>
