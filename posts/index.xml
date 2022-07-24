@@ -35,7 +35,7 @@
 &lt;ul>
 &lt;li>チームメンバの daiju さんが作った opentelemetry 対応の為のツール
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/OutThereLabs/actix-web-opentelemetry">https://github.com/OutThereLabs/actix-web-opentelemetry&lt;/a> の実装を楽にする感じ&lt;/li>
+&lt;li>&lt;a href="https://github.com/OutThereLabs/actix-web-opentelemetry">actix-web-opentelemetry&lt;/a> の実装を楽にする感じ&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>関数にアノテーションをつけるだけでボトルネックが見えるようになり最高でした&lt;/li>
