@@ -17,6 +17,7 @@
 &lt;li>&lt;a href="https://github.com/omuric/isuconf">isuconf&lt;/a>
 &lt;ul>
 &lt;li>設定ファイルの管理を行うために自前で用意した CLI ツール&lt;/li>
+&lt;li>&lt;img src="https://raw.githubusercontent.com/omuric/isuconf/main/.img/screenshot.png" alt="">&lt;/li>
 &lt;li>各インスタンスの設定ファイルの収集・配布を簡単に出来るやつ&lt;/li>
 &lt;li>去年の予選時にこしらえたもので、今年も幾つか機能追加をした (push, pull 操作の並列化や ssh-config 生成のサポートなど)&lt;/li>
 &lt;li>我ながらそこそこ便利で、去年のチームメンバが別のチームでも布教してくれていて嬉しかったです&lt;/li>
