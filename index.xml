@@ -279,40 +279,40 @@ Rust だとほぼバグなく実装に専念できたので、マジで良い言
 &lt;h2 id="おまけ-危なかった話">[おまけ] 危なかった話&lt;/h2>
 &lt;p>ビームサーチで状態同士の価値を比較する必要があり、以下のようなコードを書いていました&lt;br>
 これは &lt;code>self.value&lt;/code> と &lt;code>other.value&lt;/code> を比較し、比較に失敗した場合 (値が NaN だった等) に except 内をエラー出力としてプログラムが落ちる感じです&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-rust" data-lang="rust">&lt;span style="color:#66d9ef">impl&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span> Ord &lt;span style="color:#66d9ef">for&lt;/span> StateWrapper&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span>
-&lt;span style="color:#66d9ef">where&lt;/span>
-S: Clone,
-{
-&lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">cmp&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self, other: &lt;span style="color:#66d9ef">&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">Self&lt;/span>) -&amp;gt; &lt;span style="color:#a6e22e">Ordering&lt;/span> {
-self.value.partial_cmp(&lt;span style="color:#f92672">&amp;amp;&lt;/span>other.value).expect(
-format&lt;span style="color:#f92672">!&lt;/span>(
-&lt;span style="color:#e6db74">&amp;#34;Failed compare f64 (value0={}, value1={})&amp;#34;&lt;/span>,
-other.value, self.value,
-)
-.as_str(),
-)
-}
-}
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>自分としては比較に失敗した場合のみエラー用の文字列が生成されてほしい気持ちだったんですが、&lt;br>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span> Ord &lt;span style="color:#66d9ef">for&lt;/span> StateWrapper&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">where&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> S: Clone,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">cmp&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self, other: &lt;span style="color:#66d9ef">&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">Self&lt;/span>) -&amp;gt; &lt;span style="color:#a6e22e">Ordering&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self.value.partial_cmp(&lt;span style="color:#f92672">&amp;amp;&lt;/span>other.value).expect(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> format!(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Failed compare f64 (value0={}, value1={})&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> other.value, self.value,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .as_str(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>自分としては比較に失敗した場合のみエラー用の文字列が生成されてほしい気持ちだったんですが、&lt;br>
 上記だと常に文字列が生成されるコードになっています&lt;br>
 そのためビームサーチ内の状態比較のたびに上記のエラー文の生成が走りパフォーマンスが劇的に低下していました&lt;br>
 最終的に以下に修正して事なきを得ました&lt;br>
 以下のコードでは比較失敗時のみエラー文の生成が行われます&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-rust" data-lang="rust">&lt;span style="color:#66d9ef">impl&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span> Ord &lt;span style="color:#66d9ef">for&lt;/span> StateWrapper&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span>
-&lt;span style="color:#66d9ef">where&lt;/span>
-S: Clone,
-{
-&lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">cmp&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self, other: &lt;span style="color:#66d9ef">&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">Self&lt;/span>) -&amp;gt; &lt;span style="color:#a6e22e">Ordering&lt;/span> {
-self.value.partial_cmp(&lt;span style="color:#f92672">&amp;amp;&lt;/span>other.value)
-.unwrap_or_else(&lt;span style="color:#f92672">||&lt;/span> {
-panic&lt;span style="color:#f92672">!&lt;/span>(
-&lt;span style="color:#e6db74">&amp;#34;Failed compare f64 (value0={}, value1={})&amp;#34;&lt;/span>,
-self.value, other.value,
-)
-})
-}
-}
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://github.com/rust-lang/rust-clippy">rust-clippy&lt;/a> という rust の静的解析ツールがあり、 Legend に上がった後になんとなくかけてみたんですが、指摘事項を修正した後にベンチマークを取ると異様に速度が向上しており糞ビックリという話でした&lt;br>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span> Ord &lt;span style="color:#66d9ef">for&lt;/span> StateWrapper&lt;span style="color:#f92672">&amp;lt;&lt;/span>S&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">where&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> S: Clone,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">cmp&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self, other: &lt;span style="color:#66d9ef">&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">Self&lt;/span>) -&amp;gt; &lt;span style="color:#a6e22e">Ordering&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self.value.partial_cmp(&lt;span style="color:#f92672">&amp;amp;&lt;/span>other.value)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .unwrap_or_else(&lt;span style="color:#f92672">||&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> panic!(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Failed compare f64 (value0={}, value1={})&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self.value, other.value,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://github.com/rust-lang/rust-clippy">rust-clippy&lt;/a> という rust の静的解析ツールがあり、 Legend に上がった後になんとなくかけてみたんですが、指摘事項を修正した後にベンチマークを取ると異様に速度が向上しており糞ビックリという話でした&lt;br>
 clippy ありがとう&lt;/p></description></item><item><title>ISUCON 10 予選 参加記</title><link>https://omuric.github.io/posts/isucon10-qualify/</link><pubDate>Mon, 14 Sep 2020 16:33:29 +0900</pubDate><guid>https://omuric.github.io/posts/isucon10-qualify/</guid><description>&lt;h1 id="isucon-10-予選-参加記">ISUCON 10 予選 参加記&lt;/h1>
 &lt;p>2020年 9月12日 (土) に開催された ISUCON 10 の予選に一人チームで Rust で参加しました&lt;br>
 予選突破のボーダーが 2158 点で、自分の最終結果は 1017 点でした&lt;br>
