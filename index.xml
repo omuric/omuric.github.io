@@ -33,7 +33,7 @@
 &lt;/li>
 &lt;li>&lt;a href="https://github.com/hinohi/rust-opentelemetry-auto-span">hinohi/rust-opentelemetry-auto-span&lt;/a>
 &lt;ul>
-&lt;li>チームメンバの daiju さんが作った opentelemetry 対応の為のツール
+&lt;li>チームメンバの daiju さんが作った opentelemetry 対応の為のライブラリ
 &lt;ul>
 &lt;li>&lt;a href="https://github.com/OutThereLabs/actix-web-opentelemetry">actix-web-opentelemetry&lt;/a> の実装を楽にする感じ&lt;/li>
 &lt;/ul>
