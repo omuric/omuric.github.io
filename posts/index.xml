@@ -11,7 +11,7 @@
 &lt;ul>
 &lt;li>各操作を定義してデプロイや kataribe, pt-query-digest の実行など、コマンド一発で諸々できるようにしていた&lt;/li>
 &lt;li>↓の感じで各操作の通知が discord に来る感じにもしていた&lt;/li>
-&lt;li>&lt;img src="https://omuric.github.io/isucon12-qualify/notify.jpeg" alt="">&lt;/li>
+&lt;li>&lt;img src="https://omuric.github.io/isucon12-qualify/notify.png" alt="">&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>&lt;a href="isuconf">https://github.com/omuric/isuconf&lt;/a>
