@@ -43,7 +43,7 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h2 id="チームでやったこと">チームでやったこと&lt;/h2>
+&lt;h2 id="当日チームでやったこと">当日チームでやったこと&lt;/h2>
 &lt;ul>
 &lt;li>sqlite から mysql への移行&lt;/li>
 &lt;li>アプリケーションサーバと DB サーバの分離&lt;/li>
