@@ -14,7 +14,7 @@
 &lt;li>&lt;img src="https://omuric.github.io/isucon12-qualify/notify.png" alt="">&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>&lt;a href="isuconf">https://github.com/omuric/isuconf&lt;/a>
+&lt;li>&lt;a href="https://github.com/omuric/isuconf">isuconf&lt;/a>
 &lt;ul>
 &lt;li>設定ファイルの管理を行うために自前で用意した CLI ツール&lt;/li>
 &lt;li>各インスタンスの設定ファイルの収集・配布を簡単に出来るやつ&lt;/li>
