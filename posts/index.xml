@@ -24,13 +24,13 @@
 &lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>[https://github.com/launchbadge/sqlx] での典型的な DB 操作の素振り
+&lt;li>&lt;a href="sqlx">https://github.com/launchbadge/sqlx&lt;/a> での典型的な DB 操作の素振り
 &lt;ul>
 &lt;li>普段使わないので本番でハマりがちという反省から&lt;/li>
 &lt;li>in 句による select や bulk insert などの典型と思われるものを練習した&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>[https://github.com/hinohi/rust-opentelemetry-auto-span]
+&lt;li>&lt;a href="hinohi/rust-opentelemetry-auto-span">https://github.com/hinohi/rust-opentelemetry-auto-span&lt;/a>
 &lt;ul>
 &lt;li>チームメンバの daiju さんが作った sqlx, reqwest の opentelemetry スパン挿入を簡単にするやつ&lt;/li>
 &lt;li>関数にアノテーションをつけるだけでボトルネックが見えるようになり最高でした&lt;/li>
