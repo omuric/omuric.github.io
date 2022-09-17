@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>o</title><link>https://omuric.github.io/</link><description>Recent content on o</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 24 Jul 2022 17:00:00 +0900</lastBuildDate><atom:link href="https://omuric.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>ISUCON 12 予選 参加記</title><link>https://omuric.github.io/posts/isucon12-qualify/</link><pubDate>Sun, 24 Jul 2022 17:00:00 +0900</pubDate><guid>https://omuric.github.io/posts/isucon12-qualify/</guid><description>&lt;h1 id="isucon-12-予選-参加記">ISUCON 12 予選 参加記&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>o</title><link>https://omuric.github.io/</link><description>Recent content on o</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 17 Sep 2022 22:00:00 +0900</lastBuildDate><atom:link href="https://omuric.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>ICFP-PC 2022 参加記</title><link>https://omuric.github.io/posts/icfp-pc2022/</link><pubDate>Sat, 17 Sep 2022 22:00:00 +0900</pubDate><guid>https://omuric.github.io/posts/icfp-pc2022/</guid><description>&lt;h1 id="icfp-pc-2022-参加記">ICFP-PC 2022 参加記&lt;/h1>
+&lt;p>2022年 9/3(金) ~ 9/5(月) に開催された ICFP-PC 2022 にチーム chirijako で参加しました&lt;/p>
+&lt;p>コンテストサイト&lt;br>
+&lt;a href="https://icfpcontest2022.github.io/index.html">https://icfpcontest2022.github.io/index.html&lt;/a>&lt;br>
+リポジトリ
+&lt;a href="https://gitlab.com/icfp-pc2022_chirijako/icfp-pc2022">https://gitlab.com/icfp-pc2022_chirijako/icfp-pc2022&lt;/a>&lt;/p>
+&lt;h2 id="結果">結果&lt;/h2>
+&lt;p>17/160 位でした&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/icfpc2022/result.png" alt="">&lt;/p>
+&lt;h2 id="チームでやったこと">チームでやったこと&lt;/h2>
+&lt;h2 id="自分がやったこと">自分がやったこと&lt;/h2>
+&lt;h2 id="来年に向けてやっとくこと">来年に向けてやっとくこと&lt;/h2></description></item><item><title>ISUCON 12 本選 参加記</title><link>https://omuric.github.io/posts/isucon12-final/</link><pubDate>Sat, 17 Sep 2022 22:00:00 +0900</pubDate><guid>https://omuric.github.io/posts/isucon12-final/</guid><description>&lt;h1 id="isucon-12-予選-参加記">ISUCON 12 予選 参加記&lt;/h1>
+&lt;p>2022年 8月27日 (土) に開催された ISUCON 12 の予選にチームO (dice801, daiju, omu) で Rust で参加しました&lt;br>
+自分達の最終結果は 126,837 点で、11位でした&lt;/p>
+&lt;p>&lt;img src="https://omuric.github.io/isucon12-final/result.png" alt="">&lt;/p>
+&lt;h2 id="事前準備">事前準備&lt;/h2>
+&lt;h2 id="当日チームでやったこと">当日チームでやったこと&lt;/h2>
+&lt;h2 id="当日自分がやったこと">当日自分がやったこと&lt;/h2>
+&lt;h2 id="良かったこと">良かったこと&lt;/h2>
+&lt;h2 id="反省点">反省点&lt;/h2>
+&lt;h2 id="感想">感想&lt;/h2></description></item><item><title>ISUCON 12 予選 参加記</title><link>https://omuric.github.io/posts/isucon12-qualify/</link><pubDate>Sun, 24 Jul 2022 17:00:00 +0900</pubDate><guid>https://omuric.github.io/posts/isucon12-qualify/</guid><description>&lt;h1 id="isucon-12-予選-参加記">ISUCON 12 予選 参加記&lt;/h1>
 &lt;p>2022年 7月23日 (土) に開催された ISUCON 12 の予選にチームO (dice801, daiju, omu) で Rust で参加しました&lt;br>
 自分達の最終結果は 25598 点で、20位で予選突破しました。&lt;br>
 (&lt;a href="https://isucon.net/archives/56838276.html">最終結果一覧&lt;/a>)&lt;/p>
