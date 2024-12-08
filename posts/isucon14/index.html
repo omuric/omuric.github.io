@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>o  | ISUCON 12 本選 参加記</title>
+	<title>o  | ISUCON 14 参加記</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.75.0-DEV" />
 	
@@ -62,7 +62,7 @@
 		<a href="https://omuric.github.io/" title="o" class="heading font-cursive icon">o</a>
 	</h2>
 </div>
-<h1 class="pt-2">ISUCON 12 本選 参加記</h1>
+<h1 class="pt-2">ISUCON 14 参加記</h1>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -71,7 +71,7 @@
 
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2022-09-17T22:00:00&#43;09:00">2022-9-17 22:00</time>
+		datetime="2024-12-08T18:20:00&#43;09:00">2024-12-8 18:20</time>
 </div>
 
 <hr />
@@ -83,20 +83,65 @@
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h1 id="isucon-12-予選-参加記">ISUCON 12 予選 参加記</h1>
-<p>2022年 8月27日 (土) に開催された ISUCON 12 の予選にチームO (dice801, daiju, omu) で Rust で参加しました<br>
-自分達の最終結果は 126,837 点で、11位でした</p>
-<p><img src="https://omuric.github.io/isucon12-final/result.png" alt=""></p>
-<h2 id="事前準備">事前準備</h2>
-<p>TBW</p>
-<h2 id="当日チームでやったこと">当日チームでやったこと</h2>
-<p>TBW</p>
-<h2 id="当日自分がやったこと">当日自分がやったこと</h2>
-<p>TBW</p>
-<h2 id="良かったこと">良かったこと</h2>
-<p>TBW</p>
-<h2 id="反省点">反省点</h2>
-<h2 id="感想">感想</h2>
+		<div class="c-rich-text"><h1 id="isucon-14-参加記">ISUCON 14 参加記</h1>
+<p>久方ぶりに一人で参加<br>
+言語は Rust</p>
+<p><a href="https://isucon.net/archives/58818382.html">https://isucon.net/archives/58818382.html</a></p>
+<p><img src="https://omuric.github.io/isucon14/result1.png" alt=""></p>
+<p><img src="https://omuric.github.io/isucon14/result2.png" alt=""></p>
+<h2 id="やったこと">やったこと</h2>
+<ul>
+<li>chair テーブルにカラム追加
+<ul>
+<li>緯度・経度</li>
+<li>速度</li>
+<li>ライドに使用中かどうか
+<ul>
+<li>GET /api/chair/notification で COMPLETED を返したときに未使用に戻す</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GET /api/internal/matching をいい感じに
+<ul>
+<li>ライドから見て、最も早く到達する椅子をマッチングさせるように
+<ul>
+<li>椅子から見てライドもやったけどスコアは伸びず</li>
+</ul>
+</li>
+<li>chairs に貼ったカラムを使う</li>
+</ul>
+</li>
+<li>GET /api/*/notification 系の retry_after_ms を長くする
+<ul>
+<li>SSE やりたかったけど、知見が無さすぎて厳しいので割り切って諦め</li>
+<li>chair を 500ms, app を 2000ms とかにした (適当)</li>
+</ul>
+</li>
+<li>GET /api/app/nearby-chairs を高速化
+<ul>
+<li>chairs に貼ったカラムを使う</li>
+</ul>
+</li>
+<li>サーバを以下の構成に
+<ul>
+<li>1台目: app・MySQL</li>
+<li>2台目: app・nginx・matcher</li>
+<li>3台目: app</li>
+</ul>
+</li>
+<li>スロークエリを見ながらインデックスを貼る</li>
+</ul>
+<h2 id="やり残し">やり残し</h2>
+<ul>
+<li>たまにベンチの初期化処理で落ちるバグが直せず
+<ul>
+<li>追試で落ちそう</li>
+</ul>
+</li>
+<li>chairs の移動距離の合計を集計するのをやろうとしたが時間が足りず断念</li>
+<li>SSE 勉強</li>
+</ul>
 </div>
 	</section>
 
@@ -121,7 +166,7 @@
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 30 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 60 words in this page.
 	</div>
 </div>
 
@@ -132,21 +177,14 @@
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/posts/isucon12-qualify/">
+    <a class="flex-grow-0" href="/posts/icfp-pc2022/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        ISUCON 12 予選 参加記
+        ICFP-PC 2022 参加記
     </a>
     
-    
-    <a class="flex-grow-0" href="/posts/icfp-pc2022/">
-        ICFP-PC 2022 参加記
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
