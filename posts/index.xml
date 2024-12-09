@@ -23,6 +23,8 @@
 &lt;p&gt;&lt;a href=&#34;https://isucon.net/archives/58818382.html&#34;&gt;https://isucon.net/archives/58818382.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://omuric.github.io/isucon14/result1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://omuric.github.io/isucon14/result2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最終順位は 65/831&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://isucon.net/archives/58837992.html&#34;&gt;https://isucon.net/archives/58837992.html&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;やったこと&#34;&gt;やったこと&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;chair テーブルにカラム追加
@@ -70,7 +72,11 @@
 &lt;ul&gt;
 &lt;li&gt;たまにベンチの初期化処理で落ちるバグが直せず
 &lt;ul&gt;
-&lt;li&gt;追試で落ちそう&lt;/li&gt;
+&lt;li&gt;追試で落ちそう
+&lt;ul&gt;
+&lt;li&gt;通った&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;chairs の移動距離の合計を集計するのをやろうとしたが時間が足りず断念&lt;/li&gt;
